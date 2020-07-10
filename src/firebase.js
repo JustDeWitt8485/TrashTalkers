@@ -1,5 +1,12 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore' ;
+// import firebase from 'firebase/app';
+// import 'firebase/firestore' ;
+
+// import * as firebase from 'firebase';
+// import 'firebase/firestore';
+const firebase = require("firebase/firebase");
+// Required for side-effects
+require("firebase/firestore");
+
 
 
 const firebaseConfig = {
@@ -19,6 +26,10 @@ const firebaseConfig = {
 
   window.firebase = firebase;
 
+
+  // firebase.firestore.setting({timestampInSnapshots: true})
+
   export const firestore = firebase.firestore();
+
 
   export default firebase;
