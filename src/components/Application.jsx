@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+
 import Posts from './Posts';
 
 class Application extends Component {
@@ -35,6 +37,12 @@ class Application extends Component {
       },
     ],
   };
+
+  // componentDidMount = () => {
+  //   const posts = firestore.collection('posts')
+
+  //   console.log({ posts })
+  // }
 
   handleCreate = post => {
     const { posts } = this.state;
