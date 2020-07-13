@@ -26,10 +26,13 @@ const firebaseConfig = {
 
   window.firebase = firebase;
 
-
-  // firebase.firestore.setting({timestampInSnapshots: true})
+ 
 
   export const firestore = firebase.firestore();
+
+  // Be wary of and figure out why this doesn't work
+//  const setting = {Timestamp: true}
+//  firestore.settings(setting);
 
 
   export default firebase;

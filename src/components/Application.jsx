@@ -9,37 +9,45 @@ class Application extends Component {
   state = {
     posts: []
   };
+  
+  unsubscribe = null;
+
+
 
   componentDidMount = async () => {
-    const snapshot = await firestore.collection('posts').get()
-
-    const posts = snapshot.docs.map(collectsIdsAndDocs);
-
-    this.setState({posts});
+    this.unsubscribe = firestore.collection('posts').onSnapshot(snapshot => {
+      const posts = snapshot.docs.map(collectsIdsAndDocs);
+      this.setState({posts})
+    });
   }
 
-  handleCreate = async post => {
-    const { posts } = this.state;
+  componentWillUnmount = () => {
+    this.unsubscribe();
+  } 
+
+  // handleCreate = async post => {
+  //   // const { posts } = this.state;
     
-    const docRef = await firestore.collection('posts').add(post)
+  //    firestore.collection('posts').add(post)
 
-    const doc = await docRef.get();
+  //   // const doc = await docRef.get();
 
-    const newPost = collectsIdsAndDocs(doc)
+  //   // const newPost = collectsIdsAndDocs(doc)
 
-    this.setState({ posts: [newPost, ...posts] });
-  };
+  //   // this.setState({ posts: [newPost, ...posts] });
+  // };
 
 
-  handleRemove = async id => {
-    const allPosts = this.state.posts;
+  // handleRemove = async id => {
+  //   // const allPosts = this.state.posts;
 
-    // await firestore.doc(`posts/${id}`.delete());
+  //   firestore.doc(`posts/${id}`).delete();
+  //   // console.log(id)
 
-    const posts = allPosts.filter(post => post.id !== id)
+  //   // const posts = allPosts.filter(post => post.id !== id);
 
-    this.setState({posts});
-  }
+  //   // this.setState({posts});
+  // }
 
   render() {
     const { posts } = this.state;
@@ -47,7 +55,7 @@ class Application extends Component {
     return (
       <main className="Application">
         <h1>Think Piece</h1>
-        <Posts posts={posts} onCreate={this.handleCreate} onRemove={this.handleRemove} />
+        <Posts posts={posts}  />
       </main>
     );
   }
