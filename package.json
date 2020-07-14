@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.11.1",
+    "firebase": "^4.12.0",
     "firebase-admin": "^6.4.0",
     "firebase-tools": "^6.1.2",
     "moment": "^2.22.2",
+    "nodemon": "^2.0.4",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-redux": "^6.0.0",
@@ -30,6 +31,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.14.1"
   }
 }
