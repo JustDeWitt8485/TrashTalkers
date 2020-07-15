@@ -1,6 +1,7 @@
 // import firebase from 'firebase';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore' ;
+import 'firebase/analytics'
 import "firebase/auth";
 
 
@@ -25,6 +26,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = firebase.initializeApp(firebaseConfig);
+firebase.analytics()
 
 
 window.firebase = app;
