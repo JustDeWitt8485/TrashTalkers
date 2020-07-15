@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Authentication from './Authentication';
-import { firestore } from '../firebase'
+import {firestore, auth} from '../firebase'
+
+
 import Posts from './Posts';
 import { collectsIdsAndDocs } from '../ultilities';
 
@@ -13,10 +15,10 @@ import { collectsIdsAndDocs } from '../ultilities';
 
 class Application extends Component {
   state = {
-    posts: [],
-    user: null,
+    posts: [], 
+    user: null
   };
-
+  
 
   unsubscribeFromFirestore = null;
   unsubscribeFromAuth = null;
@@ -29,10 +31,14 @@ class Application extends Component {
 
 
   componentDidMount = async () => {
-    this.unsubscribe = firestore.collection('posts').onSnapshot(snapshot => {
+    this.unsubscribeFromFireStore = firestore.collection('posts').onSnapshot(snapshot => {
       const posts = snapshot.docs.map(collectsIdsAndDocs);
       this.setState({ posts })
     });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user =>{
+      this.setState({user})
+    });
+ 
   }
 
   componentWillUnmount = () => {
