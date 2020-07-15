@@ -1,6 +1,12 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+const firebase = require("../node_modules/@firebase");
+require("../node_modules/@firebase/firestore-types");
+require("../node_modules/@firebase/auth");
+// import firebase from 'firebase/app';
+// import 'firebase/firestore' ;
+
+// import * as firebase from 'firebase';
+// import 'firebase/firestore';
+// Required for side-effects
 
 
 
@@ -28,3 +34,10 @@ export const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
+
+  // Be wary of and figure out why this doesn't work
+//  const setting = {Timestamp: true}
+//  firestore.settings(setting);
+
+

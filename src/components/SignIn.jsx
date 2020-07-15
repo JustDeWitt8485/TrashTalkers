@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { signInWithGoogle } from '../firebase';
-import '@firebase/auth'; 
+
 
 class SignIn extends Component {
   state = { email: '', password: '' };
