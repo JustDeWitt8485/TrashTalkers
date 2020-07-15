@@ -1,12 +1,14 @@
-// import firebase from 'firebase/app';
-// import 'firebase/firestore' ;
+// import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore' ;
+import "firebase/auth";
 
-// import * as firebase from 'firebase';
+
 // import 'firebase/firestore';
-const firebase = require("firebase/firebase");
-// Required for side-effects
-require("firebase/firestore");
-require("firebase/auth");
+// const firebase = require("firebase/firebase");
+// // Required for side-effects
+// require("firebase/firestore");
+// require("firebase/auth");
 
 
 
@@ -22,19 +24,19 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 
 
-window.firebase = firebase;
+window.firebase = app;
 
-export const firestore = firebase.firestore();
-export const auth = firebase.auth();
+export const firestore = app.firestore();
+export const auth = app.auth();
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const signOut = () => auth.signOut();
 
-export default firebase;
+export default app;
  
 
   
