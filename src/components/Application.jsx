@@ -60,7 +60,7 @@ render() {
 
   return (
     <main className="Application">
-      <h1>Think Piece</h1>
+      <h1>Power Talkers</h1>
       <Authentication user={user} />
       <Posts posts={posts} onCreate={this.handleCreate} />
     </main>
