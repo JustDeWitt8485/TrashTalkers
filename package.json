@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "bootstrap": "^4.5.0",
-=======
     "fast-crc32c": "^2.0.0",
->>>>>>> 74c73199e89d2cdd85400cdc2447ba58f3811585
     "firebase": "^7.16.0",
     "firebase-admin": "^9.0.0",
     "firebase-tools": "^8.6.0",
