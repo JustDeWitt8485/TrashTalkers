@@ -40,41 +40,53 @@ firestore.settings({timestampsInSnapshots: true});
 
 window.firebase = app;
 
-export const createUserProfileDocument = async (user, additionalData) => {
-  if(!user) return;
-  const userRef = firestore.doc('users/${user.uid}')
+export const createUserDocument = async (user, additionalData) => {
+  // If there is no user, let's not do this.
+  if (!user) return;
 
+  // Get a reference to the location in the Firestore where the user
+  // document may or may not exist.
+  const userRef = firestore.doc(`users/${user.uid}`);
+
+  // Go and fetch a document from that location.
   const snapshot = await userRef.get();
 
-  if(!snapshot.exists) {
-    const { displayName, email, photoUrl } = user;
+  // If there isn't a document for that user. Let's use information
+  // that we got from either Google or our sign up form.
+  if (!snapshot.exists) {
+    const { displayName, email, photoURL } = user;
     const createdAt = new Date();
     try {
       await userRef.set({
         displayName,
         email,
-        photoUrl,
+        photoURL,
         createdAt,
         ...additionalData,
-      })
-    } catch(err) {
-      console.log('Error creating user', err);
+      });
+    } catch (error) {
+      console.error('Error creating user', console.error);
     }
   }
-}
 
-export const getUserDocument = async (,uid) => {
-  if(!uid) return null;
-  try {
-    const userDocument = await firestore.collection( `users`).doc(uid).get();
-
-    return { uid, ...userDocument.data()};
-  } catch (err) {
-    console.err( 'Error fetching', err.message)
-  }
-
+  // Get the document and return it, since that's what we're
+  // likely to want to do next.
   return getUserDocument(user.uid);
-}
+};
+
+export const getUserDocument = async uid => {
+  if (!uid) return null;
+  try {
+    const userDocument = await firestore
+      .collection('users')
+      .doc(uid)
+      .get();
+
+    return { uid, ...userDocument.data() };
+  } catch (error) {
+    console.error('Error fetching user', error.message);
+  }
+};
 export default app;
 
 
