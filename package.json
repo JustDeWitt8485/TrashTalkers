@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fast-crc32c": "^2.0.0",
     "firebase": "^7.16.0",
     "firebase-admin": "^9.0.0",
-    "firebase-tools": "^8.5.0",
+    "firebase-tools": "^8.6.0",
+    "hash-stream-validation": "^0.2.3",
     "moment": "^2.27.0",
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
@@ -13,7 +15,8 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "write-file-atomic": "^3.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

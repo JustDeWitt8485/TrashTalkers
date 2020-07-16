@@ -1,39 +1,47 @@
 import React, { Component } from 'react'
 import Authentication from './Authentication';
-import {firestore, auth} from '../firebase'
+import { firestore, auth } from '../firebase'
 
 
 import Posts from './Posts';
 import { collectsIdsAndDocs } from '../ultilities';
 
+
+
+
+
+
+
+
 class Application extends Component {
   state = {
-    posts: [], 
+    posts: [],
     user: null
   };
-  
+
 
   unsubscribeFromFirestore = null;
   unsubscribeFromAuth = null;
 
+
   componentDidMount = async () => {
     this.unsubscribeFromFireStore = firestore.collection('posts').onSnapshot(snapshot => {
       const posts = snapshot.docs.map(collectsIdsAndDocs);
-      this.setState({posts})
+      this.setState({ posts })
     });
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user =>{
-      this.setState({user})
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({ user })
     });
- 
-  }
+    
+  };
 
   componentWillUnmount = () => {
     this.unsubscribe();
-  } 
+  };
 
   // handleCreate = async post => {
   //   // const { posts } = this.state;
-    
+
   //    firestore.collection('posts').add(post)
 
   //   // const doc = await docRef.get();
@@ -55,17 +63,17 @@ class Application extends Component {
   //   // this.setState({posts});
   // }
 
-render() {
-  const { posts, user } = this.state;
+  render() {
+    const { posts, user } = this.state;
 
-  return (
-    <main className="Application">
-      <h1>Power Talkers</h1>
-      <Authentication user={user} />
-      <Posts posts={posts} onCreate={this.handleCreate} />
-    </main>
-  );
-}
-  
+    return (
+      <main className="Application">
+        <h1>Think Piece</h1>
+        <Authentication user={user} />
+        <Posts posts={posts} onCreate={this.handleCreate} />
+      </main>
+    );
+  }
+
 }
 export default Application;
