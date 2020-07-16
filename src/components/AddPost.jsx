@@ -18,7 +18,6 @@ class AddPost extends Component {
 
 
     const post = {
-      id: Date.now().toString(),
       title,
       content,
       user: {
@@ -32,7 +31,7 @@ class AddPost extends Component {
       createdAt: new Date(),
     }
 
-    firestore.collection('posts').doc(post.id).set(post)
+    firestore.collection('posts').add(post)
 
     this.setState({ title: '', content: '' });
   };
