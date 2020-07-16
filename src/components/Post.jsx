@@ -1,54 +1,72 @@
-import React from 'react';
+import React from "react";
 
-import moment from 'moment';
+import moment from "moment";
 
-import {firestore} from '../firebase'
+import { firestore } from "../firebase";
+import { Card } from "react-bootstrap";
 
-const Post = ({ title, content, user, createdAt, stars, comments, id}) => {
-  const postRef = firestore.doc(`posts/${id}`) ///Needs to be fixed id
+const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
+  const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
   const remove = () => postRef.delete();
-  const star = () => postRef.update({ stars: stars + 1});
+  const star = () => postRef.update({ stars: stars + 1 });
   return (
-    <article className="Post">
-      <div className="Post--content">
-        <h3>{title}</h3>
-        <div>{content}</div>
-      </div>
-      <div className="Post--meta">
-        <div>
-          <p>
+    <Card
+      style={{
+        width: 400 + "px",
+        border: 2 + "px solid black",
+        margin: "auto",
+      }}
+    >
+      {/* <article className="Post"> */}
+        {/* <div className="Post--content"> */}
+          <div className="card-header">
+            <h3 style={{marginBottom: -20+"px"}}>
+              {title}
+              </h3>
+            <br />
+            <p style={{marginLeft: 10+'px'}}>Posted by {user.displayName}</p>
+            <p style={{marginLeft: 10+'px'}}>{moment(createdAt).calendar()}</p>
+          </div>
+          <div className="card-body">{content}</div>
+        {/* </div> */}
+        <div className="card-footer" className="Post--meta" style={{
+          display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center'
+          }}>
+          <div>
+            {stars}
             <span role="img" aria-label="star">
               ⭐️
             </span>
-            {stars}
-          </p>
-          <p>
+            {comments}
             <span role="img" aria-label="comments">
               🙊
             </span>
-            {comments}
-          </p>
-          <p>Posted by {user.displayName}</p>
-          <p>{moment(createdAt).calendar()}</p>
+          </div>
+          <div>
+            <button className="star" onClick={star}>
+              Star
+            </button>
+            <button className="delete" onClick={remove}>
+              Delete
+            </button>
+          </div>
         </div>
-        <div>
-          <button className="star" onClick={star}>Star</button>
-          <button className="delete" onClick={remove}>Delete</button>
-        </div>
-      </div>
-    </article>
+      {/* </article> */}
+    </Card>
   );
 };
 
 Post.defaultProps = {
-  title: 'An Incredibly Hot Take',
+  title: "An Incredibly Hot Take",
   content:
-    'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus est aut dolorem, dolor voluptatem assumenda possimus officia blanditiis iusto porro eaque non ab autem nihil! Alias repudiandae itaque quo provident.',
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus est aut dolorem, dolor voluptatem assumenda possimus officia blanditiis iusto porro eaque non ab autem nihil! Alias repudiandae itaque quo provident.",
   user: {
-    id: '123',
-    displayName: 'Bill Murray',
-    email: 'billmurray@mailinator.com',
-    photoURL: 'https://www.fillmurray.com/300/300',
+    id: "123",
+    displayName: "Bill Murray",
+    email: "billmurray@mailinator.com",
+    photoURL: "https://www.fillmurray.com/300/300",
   },
   createdAt: new Date(),
   stars: 0,
