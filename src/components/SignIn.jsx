@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signInWithGoogle, getUserDocument } from '../firebase';
+import { signInWithGoogle, getUserDocument, auth } from '../firebase';
 
 
 class SignIn extends Component {
@@ -13,7 +13,22 @@ class SignIn extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
+    const { email, password} = this.state;
+    try {
+
+      const userDocument = await firestore
+      .collection('users')
+      .doc({uid})
+      .collection(email)
+      .get();
+      console.log(userDocument)
+      // const { user } = await auth.(
+      //   email, 
+      //   password)
+    } catch (error){
+      console.error(error)
+    }
+
     this.setState({ email: '', password: '' });
   };
 

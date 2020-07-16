@@ -11,12 +11,14 @@ class UserProvider extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount = async () => {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     //   if (user) {
     //     const userDocument = await createUserDocument(user);
     //     return this.setState({ user: userDocument.data() });
     //   }
     //   this.setState({ user: null });
+    const user = await createUserDocument(userAuth)
+    console.log(user)
     this.setState({user})
     });
   };
