@@ -1,11 +1,18 @@
-import React from "react";
-
+import React, {useContext} from "react";
 import moment from "moment";
-
 import { firestore } from "../firebase";
 import { Card } from "react-bootstrap";
+import {UserContext} from '../providers/UserProvider'
+
+const belongsToCurrentUser = (currentUser, postAuthor) => {
+  if (!currentUser) return false
+  // it'll check if the currentuser is equal to the post creater 
+  // and if they are the same, allow them to delte the post
+  return currentUser.uid === postAuthor.uid
+}
 
 const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
+  const currentUser = useContext(UserContext)
   const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
   const remove = () => postRef.delete();
   const star = () => postRef.update({ stars: stars + 1 });
@@ -25,7 +32,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
               </h3>
             <br />
             <p style={{marginLeft: 10+'px'}}>Posted by {user.displayName}</p>
-            <p style={{marginLeft: 10+'px'}}>{moment(createdAt).calendar()}</p>
+            <p style={{marginLeft: 10+'px'}}>{moment(createdAt.toDate()).calendar()}</p>
           </div>
           <div className="card-body">{content}</div>
         {/* </div> */}
@@ -48,9 +55,9 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
             <button className="star" onClick={star}>
               Star
             </button>
-            <button className="delete" onClick={remove}>
+            {belongsToCurrentUser(currentUser, user) && <button className="delete" onClick={remove}>
               Delete
-            </button>
+        </button> }
           </div>
         </div>
       {/* </article> */}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signInWithGoogle } from '../firebase';
+import { signInWithGoogle, getUserDocument } from '../firebase';
 
 
 class SignIn extends Component {
@@ -13,7 +13,7 @@ class SignIn extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
+    
     this.setState({ email: '', password: '' });
   };
 

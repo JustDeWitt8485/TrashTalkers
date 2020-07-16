@@ -6,18 +6,16 @@ import Posts from './Posts';
 
 class Application extends Component {
   // moved state = {} to componentWillUnmount = () to Providers
+
+
   // state = {
   //   user: null
   // };
-
   // unsubscribeFromAuth = null;
-
-
   // componentDidMount = async () => {
   //   this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
   //     this.setState({ user })
-  //   });
-    
+  //   }); 
   // };
 
   // componentWillUnmount = () => {
@@ -26,25 +24,17 @@ class Application extends Component {
 
   // handleCreate = async post => {
   //   // const { posts } = this.state;
-
   //    firestore.collection('posts').add(post)
-
   //   // const doc = await docRef.get();
-
   //   // const newPost = collectsIdsAndDocs(doc)
-
   //   // this.setState({ posts: [newPost, ...posts] });
   // };
 
-
   // handleRemove = async id => {
   //   // const allPosts = this.state.posts;
-
   //   firestore.doc(`posts/${id}`).delete();
   //   // console.log(id)
-
   //   // const posts = allPosts.filter(post => post.id !== id);
-
   //   // this.setState({posts});
   // }
 
