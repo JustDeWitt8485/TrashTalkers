@@ -5,7 +5,7 @@ import { firestore } from '../firebase'
 import { collectsIdsAndDocs } from '../ultilities'
 import { withRouter } from 'react-router-dom'
 import  withUser  from './withUser'
-import { UserContext } from '../providers/UserProvider'
+
 
 class PostPage extends Component {
     state = {
@@ -38,8 +38,6 @@ class PostPage extends Component {
         this.unsubscribeFromComments()
     }
     createComment = (comment) => {
-        console.log(comment)
-        console.log(this.props.user)
         const user = this.props.user
         this.commentsRef.add({
             ...comment,
