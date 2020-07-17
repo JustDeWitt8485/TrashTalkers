@@ -3,6 +3,7 @@ import moment from "moment";
 import { firestore } from "../firebase";
 import { Card } from "react-bootstrap";
 import {UserContext} from '../providers/UserProvider'
+import {Link} from 'react-router-dom'
 
 const belongsToCurrentUser = (currentUser, postAuthor) => {
   if (!currentUser) return false
@@ -27,9 +28,11 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
       {/* <article className="Post"> */}
         {/* <div className="Post--content"> */}
           <div className="card-header">
-            <h3 style={{marginBottom: -20+"px"}}>
+           <Link to={`/posts/${id}`}>
+             <h3 style={{marginBottom: -20+"px"}}>
               {title}
               </h3>
+            </Link>
             <br />
             <p style={{marginLeft: 10+'px'}}>Posted by {user.displayName}</p>
             <p style={{marginLeft: 10+'px'}}>{moment(createdAt.toDate()).calendar()}</p>

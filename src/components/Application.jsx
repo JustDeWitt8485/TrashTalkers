@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Authentication from './Authentication';
 import NavBar from './NavigationBar'
 import Posts from './Posts';
-
+import {Switch, Route, Link} from 'react-router-dom'
+import  UserProfile  from './UserProfile';
+import PostPage from './PostPage';
 
 
 
@@ -55,7 +57,11 @@ class Application extends Component {
       <NavBar />
       <h1>Think Piece</h1>
       <Authentication />
-      <Posts />
+      <Switch>
+        <Route exact path="/" component={Posts}/>
+        <Route exact path="/profile" component={ UserProfile } />
+        <Route exact path="/posts/:id" component={ PostPage } />
+      </Switch>
     </main>
   );
 }

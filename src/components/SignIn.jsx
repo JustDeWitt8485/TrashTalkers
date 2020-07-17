@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signInWithGoogle, getUserDocument, auth, firestore } from '../firebase';
+import { signInWithGoogle, auth } from '../firebase';
 
 // getUserDocument, firestore
 

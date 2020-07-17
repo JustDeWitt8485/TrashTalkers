@@ -2,7 +2,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/auth";
-
+import 'firebase/storage'
 
 // import 'firebase/firestore';
 // const firebase = require("firebase/firebase");
@@ -32,6 +32,7 @@ export const app = firebase.initializeApp(firebaseConfig);
 
 export const firestore = app.firestore();
 export const auth = app.auth();
+export const storage = app.storage()
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithRedirect(provider);
@@ -77,12 +78,7 @@ export const createUserDocument = async (user, additionalData) => {
 export const getUserDocument = async uid => {
   if (!uid) return null;
   try {
-    const userDocument = await firestore
-      .collection('users')
-      .doc(uid)
-      .get();
-
-    return { uid, ...userDocument.data() };
+    return await firestore.collection('users').doc(uid)
   } catch (error) {
     console.error('Error fetching user', error.message);
   }
