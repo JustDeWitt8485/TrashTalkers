@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { signInWithGoogle, getUserDocument, auth, firestore } from '../firebase';
 
-
+// getUserDocument, firestore
 
 class SignIn extends Component {
   state = { email: '', password: '' };

@@ -36,7 +36,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
           </div>
           <div className="card-body">{content}</div>
         {/* </div> */}
-        <div className="card-footer" className="Post--meta" style={{
+        <div className="card-footer" type="Post--meta" style={{
           display: 'flex', 
           flexDirection: 'column',
           alignItems: 'center'
