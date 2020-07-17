@@ -4,6 +4,8 @@ import Comments from './Comments'
 import { firestore } from '../firebase'
 import { collectsIdsAndDocs } from '../ultilities'
 import { withRouter } from 'react-router-dom'
+import  withUser  from './withUser'
+import { UserContext } from '../providers/UserProvider'
 
 class PostPage extends Component {
     state = {
@@ -37,12 +39,18 @@ class PostPage extends Component {
     }
     createComment = (comment) => {
         console.log(comment)
+        console.log(this.props.user)
+        const user = this.props.user
         this.commentsRef.add({
             ...comment,
+            user
         })
     }
     render () {
         const { post, comments } = this.state
+        // this console.log should show history, match, props, 
+        // ANNNDDD the user's inforamation O.o
+        console.log(this.props)
         return (
             <section>
                 {post && <Post {...post} />}
@@ -54,4 +62,4 @@ class PostPage extends Component {
         )
     }
 }
-export default withRouter(PostPage)
+export default withRouter(withUser(PostPage))

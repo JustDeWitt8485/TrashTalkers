@@ -17,7 +17,7 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
         <div className="CurrentUser--information">
           <Link to="profile"><div className="card-header">{displayName}</div></Link>
           <div className='card-body' className="email">{email}</div>
-          <div className="created-at">{moment(createdAt).calendar()}</div>
+          <div className="created-at">{moment(createdAt.toDate()).calendar()}</div>
         </div>
       </div>
       <div>

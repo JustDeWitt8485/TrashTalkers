@@ -21,7 +21,7 @@ class SignUp extends Component {
         email, 
         password)
 
-        user.updateProfile({ displayName: "Chad" })
+        user.updateProfile({ displayName })
     } catch (error){
       console.error(error)
     }
