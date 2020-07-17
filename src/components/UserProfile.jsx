@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { auth, firestore } from "../firebase";
+import { auth, firestore, storage } from "../firebase";
 
 class UserProfile extends Component {
   state = {
@@ -12,6 +12,9 @@ class UserProfile extends Component {
   get userRef() {
     return firestore.doc(`users/${this.uid}`);
   }
+  get file() {
+    return this.imageInput && this.imageInput.files[0];
+  }
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -23,6 +26,17 @@ class UserProfile extends Component {
     const { displayName } = this.state;
     if (displayName) {
       this.userRef.update({ displayName });
+    }
+    if (this.file) {
+      // goes to storage; gets all profiles; only allows changes to the file with user's uid
+      storage
+        .ref()
+        .child("userProfiles")
+        .child(this.uid)
+        .child(this.file.name)
+        .put(this.file)
+        .then((response) => response.ref.getDownloadURL())
+        .then((photoURL) => this.userRef.update({ photoURL }));
     }
   };
   render() {
@@ -37,7 +51,7 @@ class UserProfile extends Component {
             onChange={this.handleChange}
             placeholder="Display Name"
           />
-          <input type="file" ref={ref => this.imageInput = ref} />
+          <input type="file" ref={(ref) => (this.imageInput = ref)} />
           <input className="update" type="submit" />
         </form>
       </section>
