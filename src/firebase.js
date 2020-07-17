@@ -2,7 +2,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import "firebase/auth";
-
+import 'firebase/storage'
 
 // import 'firebase/firestore';
 // const firebase = require("firebase/firebase");
@@ -32,6 +32,7 @@ export const app = firebase.initializeApp(firebaseConfig);
 
 export const firestore = app.firestore();
 export const auth = app.auth();
+export const storage = firebase.storage()
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithRedirect(provider);
