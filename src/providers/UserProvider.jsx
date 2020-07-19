@@ -14,8 +14,10 @@ class UserProvider extends Component {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserDocument(userAuth);
+        console.log(userRef)
         userRef.onSnapshot(snapshot=> {
-            this.setState({user: {uid: snapshot.xd.yd.currentUser.uid, ...snapshot.data()}})
+            console.log(snapshot)
+            this.setState({user: {uid: auth.getUid(), ...snapshot.data()}})
         })
       }
       this.setState({ user: null });

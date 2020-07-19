@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import Authentication from './Authentication';
 import NavBar from './NavigationBar'
 import Posts from './Posts';
@@ -8,16 +8,50 @@ import PostPage from './PostPage';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SignOut from './SignOut'
+import ProfilePage from './ProfilePage';
+import {UserContext} from '../providers/UserProvider'
 
 
 
 
 
 
+const Application = () => {
+  const user = useContext(UserContext)
+  // moved state = {} to componentWillUnmount = () to Providers
 
 
-class Application extends Component {
-  render() {
+  // state = {
+  //   user: null
+  // };
+  // unsubscribeFromAuth = null;
+  // componentDidMount = async () => {
+  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+  //     this.setState({ user })
+  //   }); 
+  // };
+
+  // componentWillUnmount = () => {
+  //   this.unsubscribeFromAuth();
+  // };
+
+  // handleCreate = async post => {
+  //   // const { posts } = this.state;
+  //    firestore.collection('posts').add(post)
+  //   // const doc = await docRef.get();
+  //   // const newPost = collectsIdsAndDocs(doc)
+  //   // this.setState({ posts: [newPost, ...posts] });
+  // };
+
+  // handleRemove = async id => {
+  //   // const allPosts = this.state.posts;
+  //   firestore.doc(`posts/${id}`).delete();
+  //   // console.log(id)
+  //   // const posts = allPosts.filter(post => post.id !== id);
+  //   // this.setState({posts});
+  // }
+
+  // render() {
   return (
     <main 
     className="Application" 
@@ -36,15 +70,16 @@ class Application extends Component {
         <Route exact path="/" component={Authentication}/>
         {/* <Route exact path="/" component={Posts}/> */}
         <Route exact path="/posts" component={Posts}/>
-        <Route exact path="/profile" component={ UserProfile } />
+        <Route exact path="/profile" component={ ProfilePage } />
         <Route exact path="/posts/:id" component={ PostPage } />
         <Route exact path="/signout" component={ SignOut} />
         <Route exact path="/signin" component={ SignIn } />
         <Route exact path="/signup" component={ SignUp } />
+        <Route exact path="/edityourprofile" component={() => < UserProfile {...user}/>} />
       </Switch>
     </main>
   );
 }
   
-}
+// }
 export default Application;
