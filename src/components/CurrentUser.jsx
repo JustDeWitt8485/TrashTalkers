@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
-  console.log(createdAt);
+  // console.log(createdAt);
   let defaultImage = require("../images/profile.png");
   return (
     <Card

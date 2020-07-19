@@ -13,7 +13,7 @@ const belongsToCurrentUser = (currentUser, commentAuthor) => {
 }
 
 
-const Comment = withRouter(({ content, user, createdAt, errorMessage, id, match }) => {
+const Comment = withRouter(({ value, user, createdAt, errorMessage, id, match }) => {
   const currentUser = useContext(UserContext)
   const commentRef = firestore.doc(`posts/${match.params.id}/comments/${id}`)
   const remove = () => commentRef.delete();
@@ -22,7 +22,7 @@ const Comment = withRouter(({ content, user, createdAt, errorMessage, id, match 
     {user ? 
     (<Card className="Comment">
       <span className="Comment--author">{user.displayName ? user.displayName : "Anon"+Math.floor(Math.random()*1000)}</span>
-      <span className="Comment--content">{content}</span>
+      <span className="Comment--value">{value}</span>
       <span className="Comment--timestamp">{moment(createdAt).calendar()}</span>
       {belongsToCurrentUser(currentUser, user) && <button className="delete" onClick={remove}>
             Delete

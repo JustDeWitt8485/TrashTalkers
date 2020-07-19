@@ -35,21 +35,38 @@ exports.sanitizeContent = functions.firestore
 
 exports.incrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
-  .onCreate(async (snapshot, context) => {
-      const { postId } = context.params
-      const postRef = firestore.doc(`posts/${postId}`)
-      const snap = await postRef.get('comments')
-      console.log(snap)
-      const comments = snap.get('comments')
-      return postRef.update({comments: comments+1})
+  .onCreate(async (snap, context) => {
+    const { postId } = context.params;
+    const postRef = firestore.doc(`posts/${postId}`);
+    const snap = await postRef.get("comments");
+    console.log(snap);
+    const comments = snap.get("comments");
+    return postRef.update({ comments: comments + 1 });
   });
 
 exports.decrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
-  .onDelete(async (snapshot, context) => {
-      const { postId } = context.params
-      const postRef = firestore.doc(`posts/${postId}`)
-      const snap = await postRef.get('comments')
-      const comments = snap.get('comments')
-      return postRef.update({comments: comments-1})
-  });  
+  .onDelete(async (snap, context) => {
+    const deletedValue = snap.data()
+    const { postId } = context.params;
+    const postRef = firestore.doc(`posts/${postId}`);
+    const snap = await postRef.get("comments");
+    const comments = snap.get("comments");
+    return postRef.update({ comments: comments - 1 });
+  });
+
+exports.updateUserInformation = functions.firestore
+  .document("users/{userId}")
+  .onUpdate(async (snapshot, context) => {
+    const { displayName } = snapshot.data();
+
+    const postsRef = firestore
+      .collection("posts")
+      .where("user.uid", "==", snapshot.id);
+
+    return postsRef.get((postSnaps) => {
+      postSnaps.forEach((doc) => {
+        doc.ref.update({ "user.displayName": displayName });
+      });
+    });
+  });

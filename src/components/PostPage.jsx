@@ -38,6 +38,7 @@ class PostPage extends Component {
         this.unsubscribeFromComments()
     }
     createComment = (comment) => {
+        console.log(comment)
         const user = this.props.user
         try {
         this.commentsRef.add({
