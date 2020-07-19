@@ -15,7 +15,8 @@ class UserProvider extends Component {
       if (userAuth) {
         const userRef = await createUserDocument(userAuth);
         userRef.onSnapshot(snapshot=> {
-            this.setState({user: {uid: snapshot.xd.yd.currentUser.uid, ...snapshot.data()}})
+          console.log(snapshot)
+            this.setState({user: {uid: snapshot.currentUser.uid, ...snapshot.data()}})
         })
       }
       this.setState({ user: null });
