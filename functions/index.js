@@ -35,19 +35,18 @@ exports.sanitizeContent = functions.firestore
 
 exports.incrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
-  .onCreate(async (snap, context) => {
+  .onCreate(async (snapshot, context) => {
     const { postId } = context.params;
     const postRef = firestore.doc(`posts/${postId}`);
     const snap = await postRef.get("comments");
-    console.log(snap);
     const comments = snap.get("comments");
     return postRef.update({ comments: comments + 1 });
   });
 
 exports.decrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
-  .onDelete(async (snap, context) => {
-    const deletedValue = snap.data()
+  .onDelete(async (snapshot, context) => {
+    const deletedValue = snapshot.data()
     const { postId } = context.params;
     const postRef = firestore.doc(`posts/${postId}`);
     const snap = await postRef.get("comments");
