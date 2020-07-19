@@ -12,17 +12,17 @@ class PostsProvider extends Component {
     unsubscribeFromFirestore = null;
     componentDidMount = () => {
         this.unsubscribeFromFirestore = firestore.collection('posts').onSnapshot(snapshot => {
-              const posts = snapshot.docs.map(collectsIdsAndDocs);
-              this.setState({ posts })
-            }); 
+            const posts = snapshot.docs.map(collectsIdsAndDocs);
+            this.setState({ posts })
+        });
     };
-        
+
     componentWillUnmount = () => {
-            this.unsubscribeFromFirestore();
+        this.unsubscribeFromFirestore();
     };
-    render () {
-        const {posts} = this.state;
-        const {children} = this.props
+    render() {
+        const { posts } = this.state;
+        const { children } = this.props
         return (
             <PostsContext.Provider value={posts}>
                 {children}

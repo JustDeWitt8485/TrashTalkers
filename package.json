@@ -5,7 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.5.0",
     "fast-crc32c": "^2.0.0",
-    "firebase": "^7.16.0",
+    "firebase": "^7.16.1",
     "firebase-admin": "^9.0.0",
     "firebase-tools": "^8.6.0",
     "hash-stream-validation": "^0.2.3",
