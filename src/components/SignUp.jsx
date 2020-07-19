@@ -26,15 +26,15 @@ class SignUp extends Component {
 
         user.updateProfile({ displayName })
     } catch (error){
-      console.log("We are in the catch")
       console.error(error)
+      this.setState({errorMessage: error.message})
     }
 
     this.setState({ displayName: '', email: '', password: '' });
   };
 
   render() {
-    const { displayName, email, password } = this.state;
+    const { displayName, email, password, errorMessage } = this.state;
 
     return (
       <Card
@@ -81,6 +81,7 @@ class SignUp extends Component {
           Sign Up
           </Button> 
       </Form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </Card>
     );
   }

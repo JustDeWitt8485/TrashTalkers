@@ -23,8 +23,8 @@ class PostPage extends Component {
     }
     unsubscribeFromPosts = null
     unsubscribeFromComments = null
-    componentDidMount = async () => {
-        this.unsubscribeFromPosts = await this.postRef.onSnapshot(snapshot => {
+    componentDidMount = () => {
+        this.unsubscribeFromPosts = this.postRef.onSnapshot(snapshot => {
             const post = collectsIdsAndDocs(snapshot)
             this.setState({ post })
         })

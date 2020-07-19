@@ -15,10 +15,13 @@ const belongsToCurrentUser = (currentUser, postAuthor) => {
 const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   const currentUser = useContext(UserContext)
   const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
-  const commentRef = firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
+  const commentRef = async () => {
+    let commentNum = await firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
+    postRef.update({ comments: commentNum})
+  }
   const remove = () => postRef.delete();
   const star = () => postRef.update({ stars: stars + 1 });
-  useEffect(async() => postRef.update({ comments: await commentRef}), [comments])
+  useEffect(() => {commentRef()}, [comments])
   return (
     <Card
       style={{
