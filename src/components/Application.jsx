@@ -10,7 +10,7 @@ import SignUp from './SignUp';
 import SignOut from './SignOut'
 import ProfilePage from './ProfilePage';
 import {UserContext} from '../providers/UserProvider'
-
+import  NotFound  from './NotFound'
 
 
 
@@ -76,6 +76,7 @@ const Application = () => {
         <Route exact path="/signin" component={ SignIn } />
         <Route exact path="/signup" component={ SignUp } />
         <Route exact path="/edityourprofile" component={() => < UserProfile {...user}/>} />
+        <Route path="*" component={() => <NotFound />} />
       </Switch>
     </main>
   );
