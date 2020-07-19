@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { signInWithGoogle, auth } from '../firebase';
-
+import { Button, Form, Card } from 'react-bootstrap';
 
 
 class SignIn extends Component {
@@ -28,7 +28,11 @@ class SignIn extends Component {
     const { email, password } = this.state;
 
     return (
-      <form className="SignIn" onSubmit={this.handleSubmit}>
+      <Card
+      bg='light'
+      border="info"
+      style={{width:'28rem', padding:'1rem'}}>
+      <Form className="SignIn" onSubmit={this.handleSubmit}>
         <h2>Sign In</h2>
         <input
           type="email"
@@ -44,9 +48,22 @@ class SignIn extends Component {
           value={password}
           onChange={this.handleChange}
         />
-        <input type="submit" value="Sign In" />
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
-      </form>
+        <Button
+        variant="outline-info" 
+        type="submit"
+        >
+           Sign In 
+        </Button>
+
+
+        <Button 
+        variant="outline-info" 
+        onClick={signInWithGoogle}
+        >
+          Sign In With Google
+          </Button>
+      </Form>
+      </Card>
     );
   }
 }
