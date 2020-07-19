@@ -19,14 +19,14 @@ const Comment = withRouter(({ value, user, createdAt, errorMessage, id, match })
   const remove = () => commentRef.delete();
   return (
     <>
-    (<Card className="Comment">
+    <Card className="Comment">
       <span className="Comment--author">{user.displayName ? user.displayName : "Anon"+Math.floor(Math.random()*1000)}</span>
       <span className="Comment--value">{value}</span>
       <span className="Comment--timestamp">{moment(createdAt).calendar()}</span>
       {belongsToCurrentUser(currentUser, user) && <button className="delete" onClick={remove}>
             Delete
         </button>}
-    </Card>) 
+    </Card>
     {errorMessage && 
       <>
     <p style={{ color: "red" }}>{errorMessage}</p>
