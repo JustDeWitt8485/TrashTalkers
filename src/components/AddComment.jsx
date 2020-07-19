@@ -1,11 +1,7 @@
-import React, {useState, useContext} from 'react';
-import PostsContext from '../providers/PostsProvider'
+import React, {useState} from 'react';
 
 const AddComment = ({onCreate}) =>  {
-  // state = { content: '' }; 
   const [state, setState] = useState(' ')
-  const posts = useContext(PostsContext)
-  // console.log(posts)
 
   const handleChange = event => {
     console.log(event.target)

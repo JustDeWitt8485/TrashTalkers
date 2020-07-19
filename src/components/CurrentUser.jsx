@@ -1,5 +1,4 @@
 import React from "react";
-import { signOut } from "../firebase";
 import moment from "moment";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -36,7 +35,7 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
             <Link to="profile">
               <div className="card-header">{displayName}</div>
             </Link>
-            <div className="card-body" className="email">
+            <div className="card-body email">
               {email}
             </div>
             <div className="created-at">
