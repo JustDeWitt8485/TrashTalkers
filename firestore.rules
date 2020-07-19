@@ -1,0 +1,28 @@
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow the user to access documents in the "posts" collection
+    // only if they are authenticated.
+    match /posts/{postId} {
+      // allow read, write: if request.auth.uid != null;
+      // code below from firebase videos
+      allow read, update;
+      // below checks to make sure user is logged in to create posts or star posts, and makes sure the post has a title
+      allow create: if request.auth.uid != null 
+      // && !request.resource.data.title;
+      allow delete: if request.auth.uid == resource.data.user.uid;
+      
+    	match /comments/{commentId} {
+      	allow read;
+      	allow create, update: if request.auth.uid != null 
+      	// allow delete: if request.auth.uid == resource.data.user.uid	
+      	}
+        
+      }
+      
+  	match /users/{userId} {
+			allow read;
+			allow write: if request.auth.uid == userId;
+  		}
+ }
+}

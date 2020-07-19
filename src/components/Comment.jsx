@@ -1,17 +1,42 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
+import {Card} from 'react-bootstrap'
 import moment from 'moment';
+import { UserContext } from '../providers/UserProvider'
+import { firestore } from '../firebase';
+import { withRouter } from 'react-router-dom'
 
-const Comment = ({ content, user, createdAt }) => {
-  // console.log(user)
+const belongsToCurrentUser = (currentUser, commentAuthor) => {
+  if (!currentUser) return false
+  // it'll check if the currentuser is equal to the post creater 
+  // and if they are the same, allow them to delte the post
+  return currentUser.uid === commentAuthor.uid
+}
+
+
+const Comment = withRouter(({ content, user, createdAt, errorMessage, id, match }) => {
+  const currentUser = useContext(UserContext)
+  const commentRef = firestore.doc(`posts/${match.params.id}/comments/${id}`)
+  const remove = () => commentRef.delete();
   return (
-    <article className="Comment">
+    <>
+    {user ? 
+    (<Card className="Comment">
       <span className="Comment--author">{user.displayName ? user.displayName : "Anon"+Math.floor(Math.random()*1000)}</span>
       <span className="Comment--content">{content}</span>
       <span className="Comment--timestamp">{moment(createdAt).calendar()}</span>
-    </article>
+      {belongsToCurrentUser(currentUser, user) && <button className="delete" onClick={remove}>
+            Delete
+        </button>}
+    </Card>) :
+    (errorMessage && 
+      <>
+    <p style={{ color: "red" }}>{errorMessage}</p>
+    <p>good work</p>
+    </>)
+    }
+    </>
   );
-};
+});
 
 Comment.defaultProps = {
   title: 'An Incredibly Hot Take',

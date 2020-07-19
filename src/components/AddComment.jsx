@@ -10,7 +10,7 @@ const AddComment = ({onCreate}) =>  {
   };
 
   const handleSubmit = event => {
-    // console.log(content)
+    // console.log(state)
     event.preventDefault();
     onCreate(state)
     setState({ content: '' });

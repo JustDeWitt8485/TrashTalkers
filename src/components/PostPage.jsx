@@ -39,10 +39,14 @@ class PostPage extends Component {
     }
     createComment = (comment) => {
         const user = this.props.user
+        try {
         this.commentsRef.add({
             ...comment,
             user
         })
+    } catch (error) {
+        console.log("We caught an error.")
+    }
     }
     render () {
         const { post, comments } = this.state
