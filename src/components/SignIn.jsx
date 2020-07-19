@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { signInWithGoogle, auth } from '../firebase';
-import { Button, Form, Card } from 'react-bootstrap';
-
+import React, { Component } from "react";
+import { signInWithGoogle, auth } from "../firebase";
+import { Button, Form, Card } from "react-bootstrap";
 
 class SignIn extends Component {
-  state = { email: '', password: '' };
-
-  handleChange = event => {
+  state = {
+    email: "",
+    password: "",
+    errorMessage: "",
+  };
+  handleChange = (event) => {
     const { name, value } = event.target;
 
     this.setState({ [name]: value });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
     try {
@@ -25,8 +27,7 @@ class SignIn extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
-
+    const { email, password, errorMessage } = this.state;
     return (
       <Card
         bg='light'

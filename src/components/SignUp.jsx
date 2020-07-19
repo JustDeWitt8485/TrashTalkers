@@ -3,19 +3,21 @@ import { auth } from '../firebase';
 import { Button, Form, Card } from 'react-bootstrap';
 
 class SignUp extends Component {
-  state = { displayName: '', email: '', password: '' };
+  state = { 
+    displayName: '', 
+    email: '', 
+    password: '',
+    errorMessage: ''
+   };
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({ [name]: value });
   };
 
   handleSubmit =  async event => {
     event.preventDefault();
-
     const { email, password, displayName} = this.state;
-
     try {
 
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -24,6 +26,7 @@ class SignUp extends Component {
 
         user.updateProfile({ displayName })
     } catch (error){
+      console.log("We are in the catch")
       console.error(error)
     }
 

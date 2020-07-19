@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 const SignOut = () =>{
-    // setTimeout(function () {
-    //     window.location.href = "/"; //will redirect to your blog page (an ex: blog.html)
-    //  }, 5000)
+    setTimeout(function () {
+        window.location.href = "/"; //will redirect to your blog page (an ex: blog.html)
+     }, 5000)
     return (
         <>
             <h3>Thanks for visting, we hope to see you again soon.</h3>

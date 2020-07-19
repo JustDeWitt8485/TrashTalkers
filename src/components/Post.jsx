@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext, useEffect} from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
 import { Card } from "react-bootstrap";
@@ -15,8 +15,10 @@ const belongsToCurrentUser = (currentUser, postAuthor) => {
 const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   const currentUser = useContext(UserContext)
   const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
+  const commentRef = firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
   const remove = () => postRef.delete();
   const star = () => postRef.update({ stars: stars + 1 });
+  useEffect(async() => postRef.update({ comments: await commentRef}), [comments])
   return (
     <Card
       style={{
