@@ -53,10 +53,15 @@ const Application = () => {
 
   // render() {
   return (
-    <main className="Application" style={{
+    <main 
+    className="Application" 
+    style={{
       background: "url(https://skinrenewalmarco.com/wp-content/uploads/2016/03/shutterstock_345970301-e1536599252720.jpg) no-repeat center center fixed",
-      // backgroundSize: "cover",
-      height: "100%"
+      backgroundSize:'cover',
+      height: '100%',
+      overflow: 'hidden'
+      // height: "500%",
+      // width: '100%'
       }}>
       <NavBar />
       <h1>Think Piece</h1>

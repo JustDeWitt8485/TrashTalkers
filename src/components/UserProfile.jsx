@@ -26,6 +26,7 @@ const UserProfile = (user) => {
     }));
   };
   const handleSubmit = (event) => {
+    console.log(state)
     event.preventDefault();
     let newState = { ...state };
     let file = state.imageInput.current.files[0];
@@ -59,7 +60,7 @@ const UserProfile = (user) => {
     location,
     socialMedia = null;
   state.imageInput = React.createRef();
-  state.imageExpression = React.createRef();
+  // state.imageExpression = React.createRef();
   return (
     <>
       <Card
@@ -96,7 +97,7 @@ const UserProfile = (user) => {
                 // ref={(ref) => (imageInput = ref)}
                 ref={state.imageInput}
               />
-              <label for="imageInput">
+              {/* <label for="imageInput">
                 Add more pictures to express who you are!
               </label>
               <input
@@ -104,7 +105,7 @@ const UserProfile = (user) => {
                 id="imageExpression"
                 // ref={(ref) => (imageInput = ref)}
                 ref={state.imageExpression}
-              />
+              /> */}
               <div className="CurrentUser--information">
                 <div className="card-body">
                   <div>Display Name: {displayName}</div>
