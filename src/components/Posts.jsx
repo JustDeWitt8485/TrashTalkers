@@ -8,13 +8,16 @@ const Posts = () => {
   const posts = useContext(PostsContext)
   const user = useContext(UserContext)
   return (
-    <section className="Posts">
+    <section
+    style={{
+    display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center'}}
+     className="Posts">
       {user && <AddPost user={user} />}
-      {/* <PostsContext.Consumer> */}
-        {
-        // posts => 
-        posts.map(post => <Post {...post} key={post.id} />)}
-      {/* </PostsContext.Consumer> */}
+ <br/>
+ <br/>
+        { posts.map(post => <Post {...post} key={post.id} />)}
     </section>
   )
 }

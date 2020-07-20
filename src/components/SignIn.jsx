@@ -35,7 +35,7 @@ class SignIn extends Component {
       <Card
         bg="light"
         border="info"
-        style={{ width: "28rem", padding: "1rem" }}
+        style={{ width: "28rem", padding: "1rem", margin: "auto" }}
       >
         <Form className="SignIn" onSubmit={this.handleSubmit}>
           <h2>Sign In</h2>
