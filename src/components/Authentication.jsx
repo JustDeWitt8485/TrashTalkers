@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import CurrentUser from './CurrentUser';
-import SignInAndSignUp from './SignInAndSignUp';
+import { Button } from 'react-bootstrap';
+// import CurrentUser from './CurrentUser';
+// import SignInAndSignUp from './SignInAndSignUp';
 import { UserContext } from '../providers/UserProvider';
+import './Authentication.css';
 
 const Authentication = ({ loading }) => {
   const user = useContext(UserContext)
@@ -9,7 +11,9 @@ const Authentication = ({ loading }) => {
 
   return (
     <div>
-      {user ? <CurrentUser {...user} /> : <SignInAndSignUp />}
+      <Button href="/signin">Sign In</Button>
+      <Button href="/signup">Sign Up</Button>
+      {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
     </div>
   )
 };
