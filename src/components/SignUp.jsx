@@ -38,7 +38,7 @@ class SignUp extends Component {
       padding = '3rem'
       bg='light'
       border="info"
-      style={{width:'18rem', padding:'1rem'}}>
+      style={{width:'18rem', padding:'1rem', margin:'auto'}}>
       <Form className="SignUp" onSubmit={this.handleSubmit}>
         <h2>Sign Up</h2>
         <Form.Group controlId=" formBasicDisplay">

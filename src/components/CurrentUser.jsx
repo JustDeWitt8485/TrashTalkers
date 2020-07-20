@@ -9,12 +9,11 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
   let defaultImage = require("../images/profile.png");
   return (
     <Card
-      style={{
-        width: 400 + "px",
-        minHeight: 200 + "px",
-        border: 2 + "px solid black",
-        margin: 20 + "px",
-      }}
+    padding = '3rem'
+      bg='light'
+      border="info"
+      style={{width:'32rem', padding:'1rem', margin:"auto"}}
+
     >
       <section className="CurrentUser">
         <div className="CurrentUser--profile">
@@ -23,9 +22,9 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
             src={photoURL ? photoURL : defaultImage}
             alt={displayName}
             style={{
-              width: 300 + "px",
+              width: '30rem',
               minHeight: 200 + "px",
-              margin: 0 + " auto",
+              margin: " auto",
             }}
             onError={(e) => {
               e.target.onerror = null;

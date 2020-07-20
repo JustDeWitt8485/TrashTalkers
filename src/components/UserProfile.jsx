@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { auth, firestore, storage } from "../firebase";
 import moment from "moment";
-import { Card } from "react-bootstrap";
+import { Card, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const UserProfile = (user) => {
@@ -64,12 +64,10 @@ const UserProfile = (user) => {
   return (
     <>
       <Card
-        style={{
-          width: 400 + "px",
-          minHeight: 200 + "px",
-          border: 2 + "px solid black",
-          margin: 20 + "px",
-        }}
+      padding = '3rem'
+      bg='light'
+      border="info"
+      style={{width:'32rem', padding:'1rem', margin:"auto"}}
       >
         <section className="UserProfile">
           <div className="CurrentUser--profile">
@@ -79,9 +77,9 @@ const UserProfile = (user) => {
                 src={photoURL}
                 alt={displayName}
                 style={{
-                  width: 300 + "px",
+                  width: '30rem',
                   minHeight: 200 + "px",
-                  margin: 0 + " auto",
+                  margin: " auto",
                 }}
                 onError={(e) => {
                   e.target.onerror = null;
@@ -89,9 +87,11 @@ const UserProfile = (user) => {
                 }}
               />
             )}
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               <label for="imageInput">Update your profile picture:</label>
-              <input
+              <Button
+              as="input"
+              variant="outline-info"
                 type="file"
                 id="imageInput"
                 // ref={(ref) => (imageInput = ref)}
@@ -162,8 +162,11 @@ const UserProfile = (user) => {
                   />
                 </div>
               </div>
-              <input className="update" type="submit" />
-            </form>
+              <Button
+              as="input"
+              variant="outline-info"
+              className="update" type="submit" />
+            </Form>
           </div>
         </section>
       </Card>
