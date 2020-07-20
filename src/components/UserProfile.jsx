@@ -191,9 +191,14 @@ const UserProfile = (user) => {
                 type="submit"
               />
             </Form>
-            <button onClick={goHome}>Discard Changes</button>
+            <Button 
+            variant ="outline-info"
+            onClick={goHome}
+            >
+              Discard Changes
+              </Button>
           </div>
-          {loading && <Loader />}
+          {/* {loading && <Loader />} */}
           {/* {error && (
             <p style={{ color: "red" }}> */}
           {/* Sorry, that didn't go through. 
