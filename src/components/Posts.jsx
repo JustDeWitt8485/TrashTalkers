@@ -11,8 +11,8 @@ const Posts = () => {
     <section
     style={{
     display: 'flex', 
-          flexDirection: 'column',
-          alignItems: 'center'}}
+        flexDirection: 'column',
+        alignItems: 'center'}}
      className="Posts">
       {user && <AddPost user={user} />}
  <br/>

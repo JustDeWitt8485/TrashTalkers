@@ -31,8 +31,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
       border="info"
       style={{
         width:'32rem',
-        padding:'1rem',
-        margin:"auto"}}
+        margin:"1rem"}}
     >
       {/* <article className="Post"> */}
       {/* <div className="Post--content"> */}
@@ -102,6 +101,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
     </Card>
   );
 };
+
 
 // Post.defaultProps = {
 //   title: "An Incredibly Hot Take",
