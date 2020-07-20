@@ -66,7 +66,9 @@ class AddPost extends Component {
             borderStyle:'ridge',
             borderColor: 'teal',
             borderWidth: '2px',
-            padding: '.5rem'
+            padding: '.5rem',
+            fontFamily: "Sue Ellen Francis co, cursive",
+            fontSize:"large"
           }}
           type="text"
           name="title"
@@ -76,13 +78,15 @@ class AddPost extends Component {
         />
         <input
         style={{
-          height:"12rem",
+          height:"20rem",
           borderRadius:"25px",
           margin:"1rem",
           borderStyle:'ridge',
           borderColor: 'teal',
           borderWidth: '2px',
-          padding:'.5rem'
+          padding:'.5rem',
+          fontFamily: "Sue Ellen Francis co, cursive",
+          fontSize:"150%"
         }}
           type="text"
           name="content"
