@@ -14,7 +14,8 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children, bio, s
       style={{
         width:'32rem', 
         padding:'1rem', 
-        margin:"auto"}}
+        margin:"auto",
+        fontSize:'150%'}}
 
     >
       <section className="CurrentUser">

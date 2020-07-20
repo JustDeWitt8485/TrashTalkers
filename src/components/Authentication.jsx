@@ -17,7 +17,6 @@ const Authentication = ({ loading }) => {
           Sign In
       </Button>
       <Button href="/signup" variant="outline-info">Sign Up</Button>
-      {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
       <Card className='about'>
           <Card.Header>About The Creators</Card.Header>
           <Card.Body>

@@ -18,16 +18,18 @@ const AddComment = ({onCreate}) =>  {
   };
     return (
       <Form 
-      style ={{
-        display:'flex',
-        margin:'auto',
-        flexDirection:'column',
-        alignItems:'center',
-      }}
+      padding = '3rem'
+      bg='light'
+      border="info"
+      style={{
+        width:'32rem',
+        margin:"1rem",
+        fontSize:"120%"}}
       onSubmit={handleSubmit} 
       className="AddComment"
       >
         <input
+        style={{fontSize:'150%'}}
           type="text"
           // name="content"
           placeholder="Comment"
@@ -35,6 +37,7 @@ const AddComment = ({onCreate}) =>  {
           onChange={handleChange}
         />
         <Button
+        style={{fontSize:'150%'}}
         variant = "outline-info"
         as="input" 
         className="create"
