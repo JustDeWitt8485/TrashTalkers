@@ -64,7 +64,7 @@ class SignUp extends Component {
         />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password (Share With Nobody)</Form.Label> <br/>
+        <Form.Label>Password (Share With No One)</Form.Label> <br/>
         <input
           type="password"
           name="password"
