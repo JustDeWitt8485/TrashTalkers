@@ -1,5 +1,11 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const swearjar = require('swearjar')
+const {Logging} = require('@google-cloud/logging');
+
+
+const logging = new Logging('trash-talkers');
+
 
 admin.initializeApp(functions.config().firebase);
 const firestore = admin.firestore();
@@ -33,10 +39,46 @@ exports.sanitizeContent = functions.firestore
     return null; // if there was no content
   });
 
+  exports.sanitizePostedContent = functions.firestore
+  .document("posts/{postId}")
+  .onWrite(async (change) => {
+    if (!change.after.exists) return; // if the change resulted in a deletion, exit the code
+    const { content, sanitized } = change.after.data();
+    if (content && !sanitized) {
+      return change.after.ref.update({
+        content: swearjar.censor(content),
+        sanitized: true,
+      });
+    }
+    return null; // if there was no content
+  });
+
+  exports.sanitizeCommentedContent = functions.firestore
+  .document("posts/{postId}/comment/{commentId}")
+  .onWrite(async (change) => {
+    if (!change.after.exists) return; // if the change resulted in a deletion, exit the code
+    const { content, sanitized } = change.after.data();
+    if (content && !sanitized) {
+      return change.after.ref.update({
+        content: swearjar.censor(content),
+        sanitized: true,
+      });
+    }
+    return null; // if there was no content
+  });
+
 exports.incrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
   .onCreate(async (snapshot, context) => {
-    const { postId } = context.params;
+    const log = logging.log('incrementLog');
+    const entry = log.entry(context, "Context params:", context.params);
+
+    async function writeLog() {
+      // Writes the log entry
+      await log.write(entry);
+    }
+    writeLog()
+    const  postId  = context.params;
     const postRef = firestore.doc(`posts/${postId}`);
     const snap = await postRef.get("comments");
     const comment = await snap.get("comments");
