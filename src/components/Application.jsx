@@ -3,6 +3,7 @@ import Authentication from './Authentication';
 import NavBar from './NavigationBar'
 import Posts from './Posts';
 import {Switch, Route } from 'react-router-dom';
+import {Card} from 'react-bootstrap';
 import  UserProfile  from './UserProfile';
 import PostPage from './PostPage';
 import SignIn from './SignIn';
@@ -79,6 +80,7 @@ const Application = () => {
         <br/>
         <br/>
         <br/>
+        {/* <br/>
         <br/>
         <br/>
         <br/>
@@ -94,11 +96,17 @@ const Application = () => {
         <br/>
         <br/>
         <br/>
+        <br/> */}
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
+        <Card>
+          <Card.Header>About The Creators</Card.Header>
+          <Card.Body>
+            The people who were responsible for creating this app were Arianna G Basha, Meagan Ramey, Tracy DeWitt, Chad Thompson, Joshua Luvera, and Leann James. We have put our hearts into this app in hopes of making it great!
+          </Card.Body>
+          <Card.Footer>We hope you enjoy using our app!</Card.Footer>
+        </Card>
       </div>
     </main>
   );
