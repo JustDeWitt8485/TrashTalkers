@@ -1,8 +1,8 @@
-import React, { Component, useContext } from 'react'
+import React, { useContext } from 'react'
 import Authentication from './Authentication';
 import NavBar from './NavigationBar'
 import Posts from './Posts';
-import {Switch, Route, Link} from 'react-router-dom'
+import {Switch, Route } from 'react-router-dom'
 import  UserProfile  from './UserProfile';
 import PostPage from './PostPage';
 import SignIn from './SignIn';

@@ -1,34 +1,30 @@
 import React, {useState, useContext} from 'react';
-import PostsContext from '../providers/PostsProvider'
 
 const AddComment = ({onCreate}) =>  {
-  // state = { content: '' }; 
-  const [state, setState] = useState(' ')
-  const posts = useContext(PostsContext)
-  // console.log(posts)
+  const [state, setState] = useState('')
 
   const handleChange = event => {
-    console.log(event.target)
-    const { name, value } = event.target;
-    setState({ [name]: value });
+    // console.log(event.target)
+    // const { name, value } = event.target;
+    setState({ value: event.target.value });
   };
 
   const handleSubmit = event => {
     // console.log(content)
     event.preventDefault();
     onCreate(state)
-    setState({ content: '' });
+    setState({ value: '' });
   };
 
   // render() {
-    const { content } = state;
+    // const { content } = state;
     return (
       <form onSubmit={handleSubmit} className="AddComment">
         <input
           type="text"
-          name="content"
+          // name="content"
           placeholder="Comment"
-          value={content}
+          value={state.value}
           onChange={handleChange}
         />
         <input className="create" type="submit" value="Create Comment" />

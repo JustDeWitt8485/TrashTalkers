@@ -2,11 +2,20 @@ import React, { useState, useContext } from "react";
 import { auth, firestore, storage } from "../firebase";
 import moment from "moment";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const UserProfile = (user) => {
   // console.log(user)
-  const { displayName, photoURL, email, createdAt } = user;
+  const {
+    uid,
+    displayName,
+    photoURL,
+    email,
+    createdAt,
+    bio,
+    location,
+    socialMedia,
+  } = user;
   let defaultImage = require("../images/profile.png");
   const [state, setState] = useState({
     newDisplayName: "",
@@ -26,19 +35,38 @@ const UserProfile = (user) => {
     }));
   };
   const handleSubmit = (event) => {
-    console.log(state)
+    // console.log(state);
     event.preventDefault();
     let newState = { ...state };
     let file = state.imageInput.current.files[0];
-    if (state.newDisplayName === "") {
-      delete newState.newDisplayName;
+    if (state.newDisplayName !== "") {
+      // delete newState.newDisplayName;
+      userRef.update({ displayName: state.newDisplayName });
     }
-    if (newState.newDisplayName) {
-      // console.log("in displayname")
-      // console.log(userRef, state)
-      // console.log(user)
-      userRef.update({ displayName: newState.newDisplayName });
+    if (state.newEmail !== "") {
+      // delete newState.newEmail;
+      userRef.update({ email: state.newEmail });
     }
+    if (state.newBio !== "") {
+      // delete newState.newBio;
+      userRef.update({ bio: state.newBio });
+    }
+    if (state.newLocation !== "") {
+      // delete newState.newLocation;
+      userRef.update({ location: state.newLocation });
+    }
+    if (state.newSocialMedia !== "") {
+      // delete newState.newSocialMedia;
+      userRef.update({ socialMedia: state.newSocialMedia });
+    }
+    // if (newState) {
+    //   delete newState.imageInput
+    //   console.log(newState)
+    //   console.log("in displayname")
+    //   // console.log(userRef, state)
+    //   // console.log(user)
+    //   userRef.update({ newState });
+    // }
     if (file) {
       // goes to storage; gets all profiles; only allows changes to the file with user's uid
       // console.log("in imageinput")
@@ -51,14 +79,14 @@ const UserProfile = (user) => {
         .then((response) => response.ref.getDownloadURL())
         .then((photoURL) => userRef.update({ photoURL }));
     }
+    redirectSetState(
+      redirect = !redirect
+    )
   };
   const goHome = (event) => {
     redirectSetState((redirect = !redirect));
   };
   let { newDisplayName, newBio, newEmail, newLocation, newSocialMedia } = state;
-  let bio,
-    location,
-    socialMedia = null;
   state.imageInput = React.createRef();
   // state.imageExpression = React.createRef();
   return (
@@ -128,7 +156,7 @@ const UserProfile = (user) => {
                     onChange={handleChange}
                     placeholder="Email"
                   />
-                  <div>Bio: {bio ? { bio } : ""}</div>
+                  <div>Bio: {bio ? bio : ""}</div>
                   <label for="newBio">Update your bio:</label>
                   <input
                     type="text"
@@ -138,7 +166,7 @@ const UserProfile = (user) => {
                     onChange={handleChange}
                     placeholder="Bio"
                   />
-                  <div>Where are you from? {location ? { location } : ""}</div>
+                  <div>Where are you from? {location ? location : ""}</div>
                   <label for="newLocation">Update your location:</label>
                   <input
                     type="text"
@@ -148,9 +176,7 @@ const UserProfile = (user) => {
                     onChange={handleChange}
                     placeholder="Location"
                   />
-                  <div>
-                    Your social media: {socialMedia ? { socialMedia } : ""}
-                  </div>
+                  <div>Your social media: {socialMedia ? socialMedia : ""}</div>
                   <label for="newSocialMedia">Other social medias: </label>
                   <input
                     type="text"
@@ -164,7 +190,21 @@ const UserProfile = (user) => {
               </div>
               <input className="update" type="submit" />
             </form>
+
+      <button onClick={goHome}>Discard Changes
+        </button>
           </div>
+          {/* {loading && <Loader />} */}
+          {/* {error && (
+            <p style={{ color: "red" }}> */}
+              {/* Sorry, that didn't go through. 
+Please make sure the username, password, and display name are between 3 and 30 characters, and then try again. */}
+              {/* {error}
+            </p>
+          )} */}
+          {redirect && (
+            <Redirect key={uid} to={"/profile"} />
+          )}
         </section>
       </Card>
     </>

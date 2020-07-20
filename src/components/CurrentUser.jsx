@@ -1,11 +1,10 @@
 import React from "react";
-import { signOut } from "../firebase";
 import moment from "moment";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
-  console.log(createdAt);
+const CurrentUser = ({ displayName, photoURL, email, createdAt, children, bio, socialMedia, location }) => {
+  // console.log(createdAt);
   let defaultImage = require("../images/profile.png");
   return (
     <Card
@@ -36,19 +35,18 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
             <Link to="profile">
               <div className="card-header">{displayName}</div>
             </Link>
-            <div className="card-body" className="email">
+            <div className="card-body email">
               {email}
             </div>
             <div className="created-at">
               User since: {moment(createdAt).calendar()}
             </div>
-            <div>Bio</div>
-            <div>Photos</div>
-            <div>Following / Followers</div>
-            <div>From</div>
-            <div>Social Media Links</div>
-            <div>Posts</div>
-            <div>Friends</div>
+            <div>Bio: {bio ? bio : "Why you need to know?"}</div>
+            {/* <div>Following / Followers</div> */}
+            <div>From: {location ? location : "Somewhere... out there"}</div>
+            {socialMedia && <div>Social Media Links : {socialMedia}</div>}
+            {/* <div>Posts</div> */}
+            {/* <div>Friends</div> */}
           </div>
         </div>
         <div className="card-footer">

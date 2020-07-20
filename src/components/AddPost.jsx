@@ -14,7 +14,7 @@ class AddPost extends Component {
 
 
     const { title, content } = this.state;
-    const { uid, displayName, email, photoURL } = auth.currentUser || {};
+    const { uid, displayName, email, photoURL, bio, location, socialMedia } = auth.currentUser || {};
 
 
     const post = {
@@ -25,9 +25,13 @@ class AddPost extends Component {
         displayName,
         email,
         photoURL,
+        bio,
+        location,
+        socialMedia,
       },
       favorites: 0,
       comments: 0,
+      stars: 0,
       createdAt: new Date(),
     }
 

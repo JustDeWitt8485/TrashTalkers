@@ -23,8 +23,8 @@ class PostPage extends Component {
     }
     unsubscribeFromPosts = null
     unsubscribeFromComments = null
-    componentDidMount = async () => {
-        this.unsubscribeFromPosts = await this.postRef.onSnapshot(snapshot => {
+    componentDidMount = () => {
+        this.unsubscribeFromPosts = this.postRef.onSnapshot(snapshot => {
             const post = collectsIdsAndDocs(snapshot)
             this.setState({ post })
         })
@@ -38,11 +38,16 @@ class PostPage extends Component {
         this.unsubscribeFromComments()
     }
     createComment = (comment) => {
+        // console.log(comment)
         const user = this.props.user
+        try {
         this.commentsRef.add({
             ...comment,
             user
         })
+    } catch (error) {
+        console.log("We caught an error.")
+    }
     }
     render () {
         const { post, comments } = this.state

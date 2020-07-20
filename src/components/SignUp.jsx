@@ -3,19 +3,21 @@ import { auth } from '../firebase';
 import { Button, Form, Card } from 'react-bootstrap';
 
 class SignUp extends Component {
-  state = { displayName: '', email: '', password: '' };
+  state = { 
+    displayName: '', 
+    email: '', 
+    password: '',
+    errorMessage: ''
+   };
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({ [name]: value });
   };
 
   handleSubmit =  async event => {
     event.preventDefault();
-
     const { email, password, displayName} = this.state;
-
     try {
 
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -25,13 +27,14 @@ class SignUp extends Component {
         user.updateProfile({ displayName })
     } catch (error){
       console.error(error)
+      this.setState({errorMessage: error.message})
     }
 
     this.setState({ displayName: '', email: '', password: '' });
   };
 
   render() {
-    const { displayName, email, password } = this.state;
+    const { displayName, email, password, errorMessage } = this.state;
 
     return (
       <Card
@@ -78,6 +81,7 @@ class SignUp extends Component {
           Sign Up
           </Button> 
       </Form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </Card>
     );
   }

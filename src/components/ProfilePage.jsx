@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
 import CurrentUser from './CurrentUser'
-import UserProfile from './UserProfile'
 import { UserContext } from '../providers/UserProvider';
 
 const ProfilePage = () => {
