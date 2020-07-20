@@ -11,7 +11,7 @@ import SignOut from './SignOut'
 import ProfilePage from './ProfilePage';
 import {UserContext} from '../providers/UserProvider'
 import  NotFound  from './NotFound'
-
+import './style.css'
 
 
 
