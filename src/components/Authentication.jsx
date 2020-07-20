@@ -10,13 +10,16 @@ const Authentication = ({ loading }) => {
   if (loading) return null;
 
   return (
-    <div className='button'>
+    <React.Fragment>
+    <h2>Are you in search of somewhere to vent to other likeminded individuals? Look no further!</h2>
+    <div className='button'>      
       <Button 
         href="/signin" 
         variant="outline-info">
           Sign In
       </Button>
       <Button href="/signup" variant="outline-info">Sign Up</Button>
+ 
       {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
       <Card className='about'>
           <Card.Header>About The Creators</Card.Header>
@@ -26,6 +29,7 @@ const Authentication = ({ loading }) => {
           <Card.Footer>We hope you enjoy using our app!</Card.Footer>
         </Card>
     </div>
+    </React.Fragment>
   )
 };
 
