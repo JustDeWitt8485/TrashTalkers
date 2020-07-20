@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 // import CurrentUser from './CurrentUser';
 // import SignInAndSignUp from './SignInAndSignUp';
 import { UserContext } from '../providers/UserProvider';
@@ -10,9 +10,13 @@ const Authentication = ({ loading }) => {
   if (loading) return null;
 
   return (
-    <div>
-      <Button href="/signin">Sign In</Button>
-      <Button href="/signup">Sign Up</Button>
+    <div className='button'>
+      <Button 
+        href="/signin" 
+        variant="outline-info">
+          Sign In
+      </Button>
+      <Button href="/signup" variant="outline-info">Sign Up</Button>
       {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
     </div>
   )

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Authentication from './Authentication';
 import NavBar from './NavigationBar'
 import Posts from './Posts';
-import {Switch, Route } from 'react-router-dom'
+import {Switch, Route } from 'react-router-dom';
 import  UserProfile  from './UserProfile';
 import PostPage from './PostPage';
 import SignIn from './SignIn';
@@ -70,7 +70,7 @@ const Application = () => {
         />
       </Switch>
       <div>
-        <br/>
+         <br/>
         <br/>
         <br/>
         <br/>
