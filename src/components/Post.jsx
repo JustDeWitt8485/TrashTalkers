@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { UserContext } from "../providers/UserProvider";
 import { Link } from "react-router-dom";
 
@@ -82,13 +82,19 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
           </span>
         </div>
         <div>
-          <button className="star" onClick={star}>
+          <Button
+          variant= 'outline-info' 
+          className="star" 
+          onClick={star}>
             Star
-          </button>
+          </Button>
           {belongsToCurrentUser(currentUser, user) && (
-            <button className="delete" onClick={remove}>
+            <Button 
+            variant = "outline-info"
+            className="delete" 
+            onClick={remove}>
               Delete
-            </button>
+            </Button>
           )}
         </div>
       </div>

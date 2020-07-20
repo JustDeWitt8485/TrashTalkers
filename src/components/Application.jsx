@@ -11,7 +11,7 @@ import SignOut from './SignOut'
 import ProfilePage from './ProfilePage';
 import {UserContext} from '../providers/UserProvider'
 import  NotFound  from './NotFound'
-
+import './style.css'
 
 
 
@@ -23,7 +23,7 @@ const Application = () => {
     <main 
     className="Application" 
     style={{
-      background: "url(https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center fixed",
+      background: "url(https://i.pinimg.com/564x/93/74/13/93741395307093f31463dcb4a0ffff14.jpg)",
       backgroundSize:'cover',
       height: '100%',
       overflow: 'hidden'
@@ -32,16 +32,42 @@ const Application = () => {
       <h1>Power Talk</h1>
       {/* <Authentication /> */}
       <Switch>
-        <Route exact path="/" component={Authentication}/>
-        {/* <Route exact path="/" component={Posts}/> */}
-        <Route exact path="/posts" component={Posts}/>
-        <Route exact path="/profile" component={ ProfilePage } />
-        <Route exact path="/posts/:id" component={ PostPage } />
-        <Route exact path="/signout" component={ SignOut} />
-        <Route exact path="/signin" component={ SignIn } />
-        <Route exact path="/signup" component={ SignUp } />
-        <Route exact path="/edityourprofile" component={() => < UserProfile {...user}/>} />
-        <Route path="*" component={() => <NotFound />} />
+        <Route 
+        exact path="/" 
+        component={Authentication}
+        />
+        <Route 
+        exact path="/posts" 
+        component={Posts}
+        />
+        <Route 
+        exact path="/profile" 
+        component={ ProfilePage } 
+        />
+        <Route 
+        exact path="/posts/:id" 
+        component={ PostPage } 
+        />
+        <Route 
+        exact path="/signout" 
+        component={ SignOut} 
+        />
+        <Route 
+        exact path="/signin" 
+        component={ SignIn } 
+        />
+        <Route 
+        exact path="/signup" 
+        component={ SignUp } 
+        />
+        <Route 
+        exact path="/edityourprofile" 
+        component={() => < UserProfile {...user}/>} 
+        />
+        <Route 
+        path="*" 
+        component={() => <NotFound />} 
+        />
       </Switch>
       <div>
         <br/>

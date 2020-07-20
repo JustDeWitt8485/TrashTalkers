@@ -11,7 +11,10 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children, bio, s
     padding = '3rem'
       bg='light'
       border="info"
-      style={{width:'32rem', padding:'1rem', margin:"auto"}}
+      style={{
+        width:'32rem', 
+        padding:'1rem', 
+        margin:"auto"}}
 
     >
       <section className="CurrentUser">

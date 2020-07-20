@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Button, Form } from 'react-bootstrap';
 
 const AddComment = ({onCreate}) =>  {
   const [state, setState] = useState('')
@@ -15,11 +16,17 @@ const AddComment = ({onCreate}) =>  {
     onCreate(state)
     setState({ value: '' });
   };
-
-  // render() {
-    // const { content } = state;
     return (
-      <form onSubmit={handleSubmit} className="AddComment">
+      <Form 
+      style ={{
+        display:'flex',
+        margin:'auto',
+        flexDirection:'column',
+        alignItems:'center',
+      }}
+      onSubmit={handleSubmit} 
+      className="AddComment"
+      >
         <input
           type="text"
           // name="content"
@@ -27,8 +34,14 @@ const AddComment = ({onCreate}) =>  {
           value={state.value}
           onChange={handleChange}
         />
-        <input className="create" type="submit" value="Create Comment" />
-      </form>
+        <Button
+        variant = "outline-info"
+        as="input" 
+        className="create"
+        type="submit" 
+        value="Create Comment" 
+        />
+      </Form>
     );
   }
 // }
