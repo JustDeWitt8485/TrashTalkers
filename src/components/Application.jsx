@@ -25,7 +25,7 @@ const Application = () => {
     className="Application" 
     style={{
       background: "url(https://i.pinimg.com/564x/93/74/13/93741395307093f31463dcb4a0ffff14.jpg)",
-      backgroundSize:'cover',
+      backgroundSize:'100%',
       height: '100%',
       overflow: 'hidden'
       }}>
