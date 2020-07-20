@@ -28,6 +28,7 @@ class AddPost extends Component {
       },
       favorites: 0,
       comments: 0,
+      stars: 0,
       createdAt: new Date(),
     }
 

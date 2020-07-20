@@ -40,7 +40,7 @@ exports.incrementCommentCount = functions.firestore
     const postRef = firestore.doc(`posts/${postId}`);
     const snap = await postRef.get("comments");
     const comment = await snap.get("comments");
-    return postRef.update({ comments: snap + 1 });
+    return postRef.update({ comments: comment + 1 });
   });
 
 exports.decrementCommentCount = functions.firestore
