@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { auth, firestore, storage } from "../firebase";
-import moment from "moment";
 import { Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
@@ -11,7 +10,6 @@ const UserProfile = (user) => {
     displayName,
     photoURL,
     email,
-    createdAt,
     bio,
     location,
     socialMedia,
@@ -37,7 +35,6 @@ const UserProfile = (user) => {
   const handleSubmit = (event) => {
     // console.log(state);
     event.preventDefault();
-    let newState = { ...state };
     let file = state.imageInput.current.files[0];
     if (state.newDisplayName !== "") {
       // delete newState.newDisplayName;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
 import { Card } from "react-bootstrap";

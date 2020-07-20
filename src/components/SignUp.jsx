@@ -3,25 +3,25 @@ import { auth } from '../firebase';
 import { Button, Form, Card } from 'react-bootstrap';
 
 class SignUp extends Component {
-  state = { 
-    displayName: '', 
-    email: '', 
+  state = {
+    displayName: '',
+    email: '',
     password: '',
     errorMessage: ''
-   };
+  };
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit =  async event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    const { email, password, displayName} = this.state;
+    const { email, password, displayName } = this.state;
     try {
 
       const { user } = await auth.createUserWithEmailAndPassword(
-        email, 
+        email,
         password)
 
         user.updateProfile({ displayName })
