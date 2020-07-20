@@ -193,7 +193,7 @@ const UserProfile = (user) => {
             </Form>
             <button onClick={goHome}>Discard Changes</button>
           </div>
-          {loading && <Loader />}
+          {/* {loading && <Loader />} */}
           {/* {error && (
             <p style={{ color: "red" }}> */}
           {/* Sorry, that didn't go through. 
