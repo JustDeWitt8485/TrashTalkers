@@ -26,11 +26,13 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   // const {photoURL, displayName} = user
   return (
     <Card
+    padding = '3rem'
+      bg='light'
+      border="info"
       style={{
-        width: 400 + "px",
-        border: 2 + "px solid black",
-        margin: "auto",
-      }}
+        width:'32rem',
+        padding:'1rem',
+        margin:"auto"}}
     >
       {/* <article className="Post"> */}
       {/* <div className="Post--content"> */}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { firestore, auth } from '../firebase'
-
+import { Card, Form, Button } from "react-bootstrap";
 class AddPost extends Component {
   state = { title: '', content: '' };
 
@@ -44,7 +44,14 @@ class AddPost extends Component {
   render() {
     const { title, content } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="AddPost">
+      <Form style={{
+        // boxSizing:"border-box",
+        width:"40rem",
+        display:"flex",
+        flexDirection:"column",
+      }}
+      // style={{margin:"auto", position:"absolute", left:"40%", }}
+      onSubmit={this.handleSubmit} className="AddPost">
         <input
           type="text"
           name="title"
@@ -53,14 +60,23 @@ class AddPost extends Component {
           onChange={this.handleChange}
         />
         <input
+        style={{
+          height:"30rem",
+         
+        }}
           type="text"
           name="content"
           placeholder="Body"
           value={content}
           onChange={this.handleChange}
         />
-        <input className="create" type="submit" value="Create Post" />
-      </form>
+        <Button
+        variant="outline-info"
+        as ="input" 
+        className="create" 
+        type="submit" 
+        value="Create Post" />
+      </Form>
     );
   }
 }

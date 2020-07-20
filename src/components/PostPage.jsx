@@ -51,12 +51,10 @@ class PostPage extends Component {
     }
     render () {
         const { post, comments } = this.state
-        // this console.log should show history, match, props, 
-        // ANNNDDD the user's inforamation O.o
-        // console.log(this.props)
         return (
             <section>
                 {post && <Post {...post} />}
+
                 <Comments 
                     comments={comments} 
                     onCreate={this.createComment}
