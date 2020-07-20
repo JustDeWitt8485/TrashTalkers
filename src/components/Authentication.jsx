@@ -18,6 +18,13 @@ const Authentication = ({ loading }) => {
       </Button>
       <Button href="/signup" variant="outline-info">Sign Up</Button>
       {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
+      <Card className='about'>
+          <Card.Header>About The Creators</Card.Header>
+          <Card.Body>
+            The people who were responsible for creating this app were Arianna G Basha, Meagan Ramey, Tracy DeWitt, Chad Thompson, Joshua Luvera, and Leann James. We have put our hearts into this app in hopes of making it great!
+          </Card.Body>
+          <Card.Footer>We hope you enjoy using our app!</Card.Footer>
+        </Card>
     </div>
   )
 };

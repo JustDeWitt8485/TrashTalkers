@@ -10,3 +10,8 @@ div.button {
     display: flex;
     justify-content: center;
 }
+
+div.card.about {
+    position: fixed;
+    bottom: 0px;
+}
