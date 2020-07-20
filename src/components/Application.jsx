@@ -64,7 +64,7 @@ const Application = () => {
       // width: '100%'
       }}>
       <NavBar />
-      <h1>Think Piece</h1>
+      <h1>Power Talk</h1>
       {/* <Authentication /> */}
       <Switch>
         <Route exact path="/" component={Authentication}/>
