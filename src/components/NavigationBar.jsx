@@ -35,7 +35,7 @@ const NavigationBar = () => {
 
   {/* <br /> */}
   <Navbar bg="light" variant="light">
-    <Navbar.Brand href="/">Think Piece</Navbar.Brand>
+    <Navbar.Brand href="/">Power Talk</Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link href="/">Home</Nav.Link>
       {currentUser && <Nav.Link href="/profile">Your Profile</Nav.Link>}
