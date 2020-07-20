@@ -2,3 +2,10 @@ body {
     font-family: 'Handlee', cursive; 
     background-color: #95c2de;
 }
+
+h1 {
+    text-align: center;
+    color: white;
+    margin: 10px;
+    font-size: 50px;
+}

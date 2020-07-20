@@ -1,0 +1,17 @@
+a.btn.btn-outline-info {
+    font-size: 30px;
+    margin: 10px;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+}
+
+div.button {
+    display: flex;
+    justify-content: center;
+}
+
+div.card.about {
+    position: fixed;
+    bottom: 0px;
+}

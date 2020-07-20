@@ -45,7 +45,7 @@ class SignUp extends Component {
       <Form className="SignUp" onSubmit={this.handleSubmit}>
         <h2>Sign Up</h2>
         <Form.Group controlId=" formBasicDisplay">
-        <Form.Label>What Would Like To Be Called</Form.Label> <br/>
+        <Form.Label>What Would You Like To Be Called?</Form.Label> <br/>
         <input
           type="text"
           name="displayName"
@@ -54,7 +54,7 @@ class SignUp extends Component {
           onChange={this.handleChange}
         /></Form.Group>
         <Form.Group controlId="formBasicEmail">
-        <Form.Label> Favorite Email Adrress </Form.Label><br/>
+        <Form.Label> Favorite Email Address? </Form.Label><br/>
         <input
           type="email"
           name="email"
@@ -64,7 +64,7 @@ class SignUp extends Component {
         />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label> <br/>
+        <Form.Label>Password (Share With No One)</Form.Label> <br/>
         <input
           type="password"
           name="password"
