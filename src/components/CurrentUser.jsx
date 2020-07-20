@@ -3,7 +3,7 @@ import moment from "moment";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
+const CurrentUser = ({ displayName, photoURL, email, createdAt, children, bio, socialMedia, location }) => {
   // console.log(createdAt);
   let defaultImage = require("../images/profile.png");
   return (
@@ -41,13 +41,12 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
             <div className="created-at">
               User since: {moment(createdAt).calendar()}
             </div>
-            <div>Bio</div>
-            <div>Photos</div>
-            <div>Following / Followers</div>
-            <div>From</div>
-            <div>Social Media Links</div>
-            <div>Posts</div>
-            <div>Friends</div>
+            <div>Bio: {bio ? bio : "Why you need to know?"}</div>
+            {/* <div>Following / Followers</div> */}
+            <div>From: {location ? location : "Somewhere... out there"}</div>
+            {socialMedia && <div>Social Media Links : {socialMedia}</div>}
+            {/* <div>Posts</div> */}
+            {/* <div>Friends</div> */}
           </div>
         </div>
         <div className="card-footer">
