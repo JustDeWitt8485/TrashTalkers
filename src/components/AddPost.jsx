@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { firestore, auth } from '../firebase'
 import { Card, Form, Button } from "react-bootstrap";
+import { RSA_PKCS1_PSS_PADDING } from 'constants';
 class AddPost extends Component {
   state = { title: '', content: '' };
 
@@ -44,6 +45,12 @@ class AddPost extends Component {
   render() {
     const { title, content } = this.state;
     return (
+      <React.Fragment>
+        <Card
+        bg='light'
+        style={{
+        borderRadius:"25px"}}
+        variant="outline-info">
       <Form style={{
         // boxSizing:"border-box",
         width:"40rem",
@@ -53,6 +60,14 @@ class AddPost extends Component {
       // style={{margin:"auto", position:"absolute", left:"40%", }}
       onSubmit={this.handleSubmit} className="AddPost">
         <input
+          style={{
+            borderRadius:"25px",
+            margin:"1rem",
+            borderStyle:'ridge',
+            borderColor: 'teal',
+            borderWidth: '2px',
+            padding: '.5rem'
+          }}
           type="text"
           name="title"
           placeholder="Title"
@@ -61,8 +76,13 @@ class AddPost extends Component {
         />
         <input
         style={{
-          height:"30rem",
-         
+          height:"12rem",
+          borderRadius:"25px",
+          margin:"1rem",
+          borderStyle:'ridge',
+          borderColor: 'teal',
+          borderWidth: '2px',
+          padding:'.5rem'
         }}
           type="text"
           name="content"
@@ -71,12 +91,19 @@ class AddPost extends Component {
           onChange={this.handleChange}
         />
         <Button
+        style={{
+        width:"15%",
+        borderRadius:"25px",
+        margin:'.5rem',
+        padding:'.25rem'}}
         variant="outline-info"
         as ="input" 
         className="create" 
         type="submit" 
         value="Create Post" />
       </Form>
+      </Card>
+      </React.Fragment>
     );
   }
 }
