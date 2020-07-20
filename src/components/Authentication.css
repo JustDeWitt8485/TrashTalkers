@@ -16,8 +16,14 @@ div.card.about {
     bottom: 0px;
 }
 
+div.banner {
+    border: 1px solid black;
+}
+
 h2 {
     text-align: center;
     padding: 10px;
-    background-color: #17A2B8;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    
 }
