@@ -7,6 +7,8 @@ import {
     Switch,
   } from 'react-router-dom';
 
+
+
 const SupportPage = () => {
     return (
         <>
@@ -61,7 +63,9 @@ const SupportPage = () => {
                 <br/>
                 <Card.Body>
                 <Card.Title>Laugh</Card.Title>
-                <Card.Text></Card.Text>
+                 <Card.Link href="https://www.ebaumsworld.com/pictures/40-funny-memes-for-a-good-laugh/86302641/">It may seem counterintuitive to laugh, but it works. Here are a few funny memes</Card.Link>
+             
+
                 </Card.Body>
                 <br/>
             </Card>

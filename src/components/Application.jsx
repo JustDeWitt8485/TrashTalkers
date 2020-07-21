@@ -19,6 +19,7 @@ import  SupportPage  from './SupportPage';
 
 const Application = () => {
   const user = useContext(UserContext)
+  
 
   return (
     <main 
