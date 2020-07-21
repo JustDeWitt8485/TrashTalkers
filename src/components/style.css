@@ -1,3 +1,8 @@
+/* main {
+    border: 1px solid black;
+    height: 100%;
+} */
+
 body {
     font-family: 'Handlee', cursive; 
     background-color: #95c2de;
@@ -8,4 +13,9 @@ h1 {
     color: rgba(229, 218, 218, 0.813);
     margin: 10px;
     font-size: 50px;
+}
+
+div.column {
+    width: 45%;
+    margin: 20px 10px 20px 20px;
 }
