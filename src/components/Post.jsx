@@ -38,14 +38,15 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
       {/* <article className="Post"> */}
       {/* <div className="Post--content"> */}
       <div className="card-header">
+        <div style={{display: 'flex'}}>
         <img
             className="card-img-top rounded"
             src={user.photoURL ? user.photoURL : defaultImage}
             alt={user.displayName}
             style={{
-              width: 30 + "px",
+              width: '15%',
               minHeight: 20 + "px",
-              margin: 0 + " auto",
+              marginRight: '3%',
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -55,6 +56,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
           <Link to={`/posts/${id}`}>
           <h3 style={{ marginBottom: -20 + "px" }}>{title}</h3>
         </Link>
+        </div>
         <br />
         <p style={{ marginLeft: 10 + "px" }}>Posted by {user.displayName}</p>
         <p style={{ marginLeft: 10 + "px" }}>
