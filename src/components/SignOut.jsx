@@ -15,9 +15,10 @@ const SignOut = () =>{
         margin: "auto" 
         }}>
             <h3>Thanks for visting, we hope to see you again soon.</h3>
-            <p> You will be redirected in 5 seconds, if that doesn't occur, plese click this link: </p>
+            <p> You will be redirected in 5 seconds, if that doesn't occur, plese click this link: 
+                <br/>
             <Link to="/">Home</Link>
-
+            </p>
         </Card>
     )
 }

@@ -102,9 +102,6 @@ class SignUp extends Component {
               height: "auto",
               margin: "auto",
               textAlign: "center",
-              padding: "10px",
-              // backgroundColor: "whitesmoke",
-              border: "1px solid black",
               borderRadius: "10px",
               marginLeft: "5px",
             }}

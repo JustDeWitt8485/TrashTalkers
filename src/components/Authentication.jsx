@@ -13,9 +13,8 @@ const Authentication = ({ loading }) => {
   return (
     <React.Fragment>
       <div className='Application'>
-        <div className='row' style={{display:"flex",
-      justifyContent:'space-between'}}>
-          <div className='column'>
+        <div className='row' style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className='column' style={{marginLeft: '5%'}}>
             <h2>Are you in search of somewhere to vent to other likeminded individuals? Look no further!</h2>
             <p>With this app, you can chat virtually with others at no cost!
               <br />
@@ -25,7 +24,10 @@ const Authentication = ({ loading }) => {
             </p>
           </div>
           <div className='column'>
-            <img src={download} alt="People Talking" />
+            <img style={{
+              borderRadius: '10%',
+              width: '50%'
+            }}src={download} alt="People Talking" />
           </div>
         </div>
         <div>

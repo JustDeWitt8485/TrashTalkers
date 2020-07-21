@@ -52,13 +52,30 @@ class PostPage extends Component {
     render () {
         const { post, comments } = this.state
         return (
-            <section>
+            <section
+            style={{
+                margin: "0 auto",
+              }}
+            >
                 {post && <Post {...post} />}
-
+            <div
+            style={{
+                width: "40rem",
+                height: "auto",
+                margin: "auto",
+                textAlign: "center",
+                padding: "10px",
+                backgroundColor: "whitesmoke",
+                border: "1px solid black",
+                borderRadius: "10px",
+                marginLeft: "5px",
+              }}
+            >
                 <Comments 
                     comments={comments} 
                     onCreate={this.createComment}
                     />
+                    </div>
             </section>
         )
     }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
 import { Card, Button } from "react-bootstrap";
@@ -16,13 +16,13 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   let defaultImage = require("../images/profile.png");
   const currentUser = useContext(UserContext);
   const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
-  // const commentRef = async () => {
-  //   let commentNum = await firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
-  //   postRef.update({ comments: commentNum})
-  // }
+  const commentRef = async () => {
+    let commentNum = await firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
+    postRef.update({ comments: commentNum})
+  }
   const remove = () => postRef.delete();
   const star = () => postRef.update({ stars: stars + 1 });
-  // useEffect(() => {commentRef()}, [comments])
+  useEffect(() => {commentRef()}, [comments])
   // const {photoURL, displayName} = user
   return (
     <Card
@@ -38,14 +38,15 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
       {/* <article className="Post"> */}
       {/* <div className="Post--content"> */}
       <div className="card-header">
+        <div style={{display: 'flex'}}>
         <img
             className="card-img-top rounded"
             src={user.photoURL ? user.photoURL : defaultImage}
             alt={user.displayName}
             style={{
-              width: 30 + "px",
+              width: '15%',
               minHeight: 20 + "px",
-              margin: 0 + " auto",
+              marginRight: '3%',
             }}
             onError={(e) => {
               e.target.onerror = null;
@@ -55,6 +56,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
           <Link to={`/posts/${id}`}>
           <h3 style={{ marginBottom: -20 + "px" }}>{title}</h3>
         </Link>
+        </div>
         <br />
         <p style={{ marginLeft: 10 + "px" }}>Posted by {user.displayName}</p>
         <p style={{ marginLeft: 10 + "px" }}>
