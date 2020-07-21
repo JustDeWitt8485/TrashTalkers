@@ -46,6 +46,8 @@ const NavigationBar = () => {
           <Nav.Link style={{fontSize:'150%'}} href="/signin">Sign in</Nav.Link>
           <Nav.Link style={{fontSize:'150%'}} href="/signup">Sign up</Nav.Link>
           </> }
+
+          <Nav.Link style={{fontSize:'150%'}} href="/supportpage">Ways to De-stress</Nav.Link>
     </Nav>
   </Navbar>
 </>
