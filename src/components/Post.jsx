@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
 import { Card, Button } from "react-bootstrap";
@@ -16,13 +16,13 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   let defaultImage = require("../images/profile.png");
   const currentUser = useContext(UserContext);
   const postRef = firestore.doc(`posts/${id}`); ///Needs to be fixed id
-  // const commentRef = async () => {
-  //   let commentNum = await firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
-  //   postRef.update({ comments: commentNum})
-  // }
+  const commentRef = async () => {
+    let commentNum = await firestore.collection(`posts/${id}/comments`).get().then(snap => snap.size)
+    postRef.update({ comments: commentNum})
+  }
   const remove = () => postRef.delete();
   const star = () => postRef.update({ stars: stars + 1 });
-  // useEffect(() => {commentRef()}, [comments])
+  useEffect(() => {commentRef()}, [comments])
   // const {photoURL, displayName} = user
   return (
     <Card
