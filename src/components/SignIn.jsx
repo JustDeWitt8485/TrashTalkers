@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { signInWithGoogle, auth } from "../firebase";
+import { signInWithGoogle, auth, signInWithFacebook } from "../firebase";
 import { Button, Form, Card } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
     email: "",
     password: "",
     errorMessage: "",
+    redirect: false,
   };
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,6 +22,7 @@ class SignIn extends Component {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
+        this.setState({ redirect: true });
         console.log("User is logged in");
       })
       .catch((error) => {
@@ -27,10 +30,10 @@ class SignIn extends Component {
         this.setState({ errorMessage: error.message });
       });
     this.setState({ email: "", password: "" });
+    this.setState({ redirect: false });
   };
-
   render() {
-    const { email, password, errorMessage } = this.state;
+    const { email, password, errorMessage, redirect } = this.state;
     return (
       <Card
         bg="light"
@@ -60,8 +63,17 @@ class SignIn extends Component {
           <Button variant="outline-info" onClick={signInWithGoogle}>
             Sign In With Google
           </Button>
+          <Button variant="outline-info" onClick={signInWithFacebook}>
+            Sign In With Facebook
+          </Button>
+
+          {/* <fb:login-button
+            scope="public_profile,email"
+            onlogin="checkLoginState();"
+          ></fb:login-button> */}
         </Form>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        {redirect && <Redirect key={auth.getUid()} to={"/posts"} />}
       </Card>
     );
   }

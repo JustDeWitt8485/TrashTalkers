@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { auth } from '../firebase';
 import { Button, Form, Card } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
   state = {
     displayName: '',
     email: '',
     password: '',
-    errorMessage: ''
+    errorMessage: '',
+    redirect: false,
   };
 
   handleChange = event => {
@@ -25,16 +27,19 @@ class SignUp extends Component {
         password)
 
         user.updateProfile({ displayName })
+
+    this.setState({redirect: true})
     } catch (error){
       console.error(error)
       this.setState({errorMessage: error.message})
     }
 
     this.setState({ displayName: '', email: '', password: '' });
+    this.setState({redirect: false})
   };
 
   render() {
-    const { displayName, email, password, errorMessage } = this.state;
+    const { displayName, email, password, errorMessage, redirect } = this.state;
 
     return (
       <Card
@@ -82,6 +87,7 @@ class SignUp extends Component {
           </Button> 
       </Form>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {redirect && <Redirect key={auth.getUid()} to={"/posts"} />}
       </Card>
     );
   }
