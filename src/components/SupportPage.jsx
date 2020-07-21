@@ -50,7 +50,13 @@ const SupportPage = () => {
                 <br/>
                 <Card.Body>
                 <Card.Title>5 senses check-in</Card.Title>
-                <Card.Text></Card.Text>
+                <Card.Text >
+                    Count 5 things you can see,<br/>
+                    4 things you can touch, <br/>
+                    3 things you can hear, <br/>
+                    2 things you can smell, <br/>
+                    1 thing you can taste
+                </Card.Text>
                 </Card.Body>
                 <br/>
                 <Card.Body>
