@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import {Navbar, Nav} from 'react-bootstrap'
 import { UserContext } from '../providers/UserProvider';
 import { signOut } from '../firebase'
-
+import image from "../images/newlogo3.png"
 const NavigationBar = () => {
   const currentUser = useContext(UserContext)
   return (
@@ -35,11 +35,14 @@ const NavigationBar = () => {
 
   {/* <br /> */}
   <Navbar bg="light" variant="light">
-    <Navbar.Brand style={{fontSize:'150%'}} href="/">Power Talk</Navbar.Brand>
+
+    <Navbar.Brand style={{fontSize:'150%'}} href="/">
+    <img style={{width:'30%'}}src={image} /> </Navbar.Brand>
     <Nav className="mr-auto">
       {/* <Nav.Link href="/">Home</Nav.Link> */}
       {currentUser && <Nav.Link style={{fontSize:'150%'}} href="/profile">Your Profile</Nav.Link>}
       <Nav.Link style={{fontSize:'150%'}} href="/posts">Posts Feed</Nav.Link>
+      <Nav.Link style={{fontSize:'150%'}} href="/supportpage">Ways to De-stress</Nav.Link>
       {currentUser ? 
           <Nav.Link style={{fontSize:'150%'}} href="/signout" onClick={ signOut }>Sign out</Nav.Link>
           : <>
@@ -47,7 +50,6 @@ const NavigationBar = () => {
           <Nav.Link style={{fontSize:'150%'}} href="/signup">Sign up</Nav.Link>
           </> }
 
-          <Nav.Link style={{fontSize:'150%'}} href="/supportpage">Ways to De-stress</Nav.Link>
     </Nav>
   </Navbar>
 </>
