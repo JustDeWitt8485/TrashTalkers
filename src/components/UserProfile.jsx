@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth, firestore, storage } from "../firebase";
 import { Redirect } from "react-router-dom";
 import { Card, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
 
 const UserProfile = (user) => {
   // console.log(user)
@@ -91,7 +91,7 @@ const UserProfile = (user) => {
         padding="3rem"
         bg="light"
         border="info"
-        style={{ width: "32rem", padding: "1rem", margin: "auto" }}
+        style={{ width: "320rem", padding: "1rem", margin: "auto" }}
       >
         <section className="UserProfile">
           <div className="CurrentUser--profile">

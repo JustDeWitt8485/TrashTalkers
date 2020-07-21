@@ -18,7 +18,7 @@ const SupportPage = () => {
                 <br/>
                 <Card.Body>
                 <Card.Title>Talk to a friend</Card.Title>
-                <Card.Text></Card.Text>
+                <Card.Text> </Card.Text>
                 </Card.Body>
                 <br/>
                 <Card.Body>
@@ -33,7 +33,7 @@ const SupportPage = () => {
                 <br/>
                 <Card.Body>
                 <Card.Title>Laugh</Card.Title>
-                <Card.Text></Card.Text>
+                <Card.Text>It may seem counterintuitive to laugh, but it works. Here are a few funny memes: <Link><Link></Link></Link></Card.Text>
                 </Card.Body>
                 <br/>
             </Card>
@@ -41,4 +41,4 @@ const SupportPage = () => {
         </>
     )
 }
-export const SupportPage
+export default SupportPage

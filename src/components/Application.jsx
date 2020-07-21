@@ -18,6 +18,7 @@ import './style.css'
 
 const Application = () => {
   const user = useContext(UserContext)
+  
 
   return (
     <main 
