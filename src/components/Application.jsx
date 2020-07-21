@@ -12,6 +12,7 @@ import ProfilePage from './ProfilePage';
 import {UserContext} from '../providers/UserProvider'
 import  NotFound  from './NotFound'
 import './style.css'
+import SupportPage  from './SupportPage';
 
 
 
@@ -65,6 +66,10 @@ const Application = () => {
         <Route 
         exact path="/edityourprofile" 
         component={() => < UserProfile {...user}/>} 
+        />
+        <Route 
+        exact path="/supportpage" 
+        component={() => < SupportPage {...user}/>} 
         />
         <Route 
         path="*" 
