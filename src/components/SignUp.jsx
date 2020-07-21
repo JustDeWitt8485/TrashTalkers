@@ -95,13 +95,15 @@ class SignUp extends Component {
             border="info"
             style={{ width: "18rem", padding: "1rem", margin: "auto" }}
             >
-            <Button style={{
+            <Button 
+            variant = "outline-info"
+            style={{
               width: "16rem",
               height: "auto",
               margin: "auto",
               textAlign: "center",
               padding: "10px",
-              backgroundColor: "whitesmoke",
+              // backgroundColor: "whitesmoke",
               border: "1px solid black",
               borderRadius: "10px",
               marginLeft: "5px",

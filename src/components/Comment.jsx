@@ -24,9 +24,9 @@ const Comment = withRouter(({ value, user, createdAt, errorMessage, id, match })
       bg='light'
       border="info"
       style={{
-        width:'32rem',
+        width:'80%',
         margin:"1rem",
-        fontSize:"150%"}}
+        fontSize:"150%",}}
          className="Comment">
       <span className="Comment--author">{user.displayName ? user.displayName : "Anon"+Math.floor(Math.random()*1000)}</span>
       <span className="Comment--value">{value}</span>
@@ -44,6 +44,7 @@ const Comment = withRouter(({ value, user, createdAt, errorMessage, id, match })
             Delete
         </Button>}
     </Card>
+
     {errorMessage && 
       <>
     <p style={{ color: "red" }}>{errorMessage}</p>

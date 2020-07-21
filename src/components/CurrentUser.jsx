@@ -25,7 +25,7 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children, bio, s
             src={photoURL ? photoURL : defaultImage}
             alt={displayName}
             style={{
-              width: '30rem',
+              width: '28rem',
               minHeight: 200 + "px",
               margin: " auto",
             }}

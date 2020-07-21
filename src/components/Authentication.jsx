@@ -13,7 +13,8 @@ const Authentication = ({ loading }) => {
   return (
     <React.Fragment>
       <div className='Application'>
-        <div className='row'>
+        <div className='row' style={{display:"flex",
+      justifyContent:'space-between'}}>
           <div className='column'>
             <h2>Are you in search of somewhere to vent to other likeminded individuals? Look no further!</h2>
             <p>With this app, you can chat virtually with others at no cost!
