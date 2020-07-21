@@ -27,13 +27,15 @@ const Authentication = ({ loading }) => {
             <img src={download} alt="People Talking" />
           </div>
         </div>
-        <div className='button'>      
+        <div>
+        {!user && <div className='button'>      
             <Button 
               href="/signin" 
               variant="outline-info">
                 Sign In
             </Button>
             <Button href="/signup" variant="outline-info">Sign Up</Button>
+            </div>}
       
             {/* {user ? <CurrentUser {...user} /> : <SignInAndSignUp />} */}
             <Card className='about'>

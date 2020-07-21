@@ -35,46 +35,72 @@ class SignIn extends Component {
   render() {
     const { email, password, errorMessage, redirect } = this.state;
     return (
-      <Card
-        bg="light"
-        border="info"
-        style={{ width: "28rem", padding: "1rem", margin: "auto" }}
-      >
-        <Form className="SignIn" onSubmit={this.handleSubmit}>
-          <h2>Sign In</h2>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <Button variant="outline-info" type="submit">
-            Sign In
-          </Button>
+      <>
+        <Card
+          bg="light"
+          border="info"
+          style={{ width: "28rem", padding: "1rem", margin: "auto" }}
+        >
+          <Form className="SignIn" onSubmit={this.handleSubmit}>
+            <h2>Sign In</h2>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={this.handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={this.handleChange}
+            />
+            <Button variant="outline-info" type="submit">
+              Sign In
+            </Button>
 
-          <Button variant="outline-info" onClick={signInWithGoogle}>
-            Sign In With Google
-          </Button>
-          <Button variant="outline-info" onClick={signInWithFacebook}>
-            Sign In With Facebook
-          </Button>
+            <Button variant="outline-info" onClick={signInWithGoogle}>
+              Sign In With Google
+            </Button>
+            <Button variant="outline-info" onClick={signInWithFacebook}>
+              Sign In With Facebook
+            </Button>
 
-          {/* <fb:login-button
+            {/* <fb:login-button
             scope="public_profile,email"
             onlogin="checkLoginState();"
           ></fb:login-button> */}
-        </Form>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        {redirect && <Redirect key={auth.getUid()} to={"/posts"} />}
-      </Card>
+          </Form>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {redirect && <Redirect key={auth.getUid()} to={"/posts"} />}
+        </Card>
+        <Card
+          bg="light"
+          border="info"
+          style={{ width: "28rem", padding: "1rem", margin: "auto" }}
+        >
+          <Button
+            style={{
+              width: "26rem",
+              height: "auto",
+              margin: "auto",
+              textAlign: "center",
+              padding: "10px",
+              backgroundColor: "whitesmoke",
+              border: "1px solid black",
+              borderRadius: "10px",
+              marginLeft: "5px",
+            }}
+            variant="outline-info"
+            href="/signup"
+            variant="outline-info"
+          >
+            Sign Up Instead
+          </Button>
+        </Card>
+      </>
     );
   }
 }

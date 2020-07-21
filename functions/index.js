@@ -18,6 +18,27 @@ firestore.settings({ timestampsInSnapshots: true });
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+// Imports the Google Cloud client library
+const {Storage} = require('@google-cloud/storage');
+
+// Creates a client
+const storage = new Storage();
+// Creates a client from a Google service account key.
+// const storage = new Storage({keyFilename: "key.json"});
+
+/**
+ * TODO(developer): Uncomment these variables before running the sample.
+ */
+// const bucketName = 'bucket-name';
+
+// async function createBucket() {
+//   // Creates the new bucket
+//   const bucketName = "APICall"
+//   await storage.createBucket(bucketName);
+//   console.log(`Bucket ${bucketName} created.`);
+// }
+
+// createBucket().catch(console.error);
 
 exports.getAllPosts = functions.https.onRequest(async (req, res) => {
   const snapshot = await firestore.collection("posts").get();
@@ -70,18 +91,15 @@ exports.sanitizeContent = functions.firestore
 exports.incrementCommentCount = functions.firestore
   .document("posts/{postId}/comment/{commentId}")
   .onCreate(async (snapshot, context) => {
-    const log = logging.log('incrementLog');
-    const entry = log.entry(context, "Context params:", context.params);
-
-    async function writeLog() {
-      // Writes the log entry
-      await log.write(entry);
-    }
-    writeLog()
+    console.log("Context: ", context)
     const  postId  = context.params;
+    console.log("postId: ", postId)
     const postRef = firestore.doc(`posts/${postId}`);
+    console.log("postRef :", postRef)
     const snap = await postRef.get("comments");
+    console.log("snap :", snap)
     const comment = await snap.get("comments");
+    console.log("comment :", comment)
     return postRef.update({ comments: comment + 1 });
   });
 
@@ -111,3 +129,5 @@ exports.updateUserInformation = functions.firestore
       });
     });
   });
+
+  

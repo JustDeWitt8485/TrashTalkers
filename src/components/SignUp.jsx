@@ -42,6 +42,7 @@ class SignUp extends Component {
     const { displayName, email, password, errorMessage, redirect } = this.state;
 
     return (
+      <>
       <Card
       padding = '3rem'
       bg='light'
@@ -89,6 +90,29 @@ class SignUp extends Component {
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           {redirect && <Redirect key={auth.getUid()} to={"/posts"} />}
       </Card>
+            <Card
+            bg="light"
+            border="info"
+            style={{ width: "18rem", padding: "1rem", margin: "auto" }}
+            >
+            <Button style={{
+              width: "16rem",
+              height: "auto",
+              margin: "auto",
+              textAlign: "center",
+              padding: "10px",
+              backgroundColor: "whitesmoke",
+              border: "1px solid black",
+              borderRadius: "10px",
+              marginLeft: "5px",
+            }}
+                    href="/signin" 
+                    variant="outline-info">
+                      Already a member? Click here to Sign In
+                  </Button>
+            </Card>
+            </>
+      
     );
   }
 }
