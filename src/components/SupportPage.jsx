@@ -12,6 +12,11 @@ const SupportPage = () => {
         <>
         <div>
             <Card>
+                <Card.Title> 
+                    <h2>
+                        Find Resources
+                        </h2>
+                        </Card.Title>
                 <Card.Body>
                 <Card.Title>2 Minute Timeout</Card.Title>
                 <Card.Text>
@@ -39,7 +44,7 @@ const SupportPage = () => {
                     </Card.Link>
                     </Card.Title>
                 <Card.Text>
-
+                Chances are, you’ve already heard about the many health perks of yoga. The ancient practice can improve your flexibility and posture, strengthen your muscles, and help with weight loss. It can also benefit your mental health, as many studies show yoga can reduce stress, anxiety, and depression.
                 </Card.Text>
                 </Card.Body>
                 <br/>
@@ -58,4 +63,4 @@ const SupportPage = () => {
         </>
     )
 }
-export const SupportPage
+export default SupportPage
