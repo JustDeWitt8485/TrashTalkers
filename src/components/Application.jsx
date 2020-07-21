@@ -71,20 +71,7 @@ const Application = () => {
         />
       </Switch>
       <div>
-<<<<<<< HEAD
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-=======
          {/* <br/>
->>>>>>> 0f7066e52d12c8240c2be0bf6ad8e01152b342bf
         <br/>
         <br/>
         <br/>

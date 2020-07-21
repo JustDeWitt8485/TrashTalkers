@@ -11,23 +11,6 @@ const Authentication = ({ loading }) => {
   if (loading) return null;
 
   return (
-<<<<<<< HEAD
-    <div className='button'>
-      <Button 
-        href="/signin" 
-        variant="outline-info">
-          Sign In
-      </Button>
-      <Button href="/signup" variant="outline-info">Sign Up</Button>
-      <Card className='about'>
-          <Card.Header>About The Creators</Card.Header>
-          <Card.Body>
-            The people who were responsible for creating this app were Arianna G Basha, Meagan Ramey, Tracy DeWitt, Chad Thompson, Joshua Luvera, and Leann James. We have put our hearts into this app in hopes of making it great!
-          </Card.Body>
-          <Card.Footer>We hope you enjoy using our app!</Card.Footer>
-        </Card>
-    </div>
-=======
     <React.Fragment>
       <div className='Application'>
         <div className='row'>
@@ -63,7 +46,6 @@ const Authentication = ({ loading }) => {
         </div>
       </div>
     </React.Fragment>
->>>>>>> 0f7066e52d12c8240c2be0bf6ad8e01152b342bf
   )
 };
 
