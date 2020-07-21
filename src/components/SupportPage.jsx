@@ -1,5 +1,11 @@
 import React from 'react'
 import {Card} from 'react-bootstrap'
+import {
+    BrowserRouter as Router,
+    Link,
+    Route,
+    Switch,
+  } from 'react-router-dom';
 
 
 
@@ -8,6 +14,11 @@ const SupportPage = () => {
         <>
         <div>
             <Card>
+                <Card.Title> 
+                    <h2>
+                        Find Resources
+                        </h2>
+                        </Card.Title>
                 <Card.Body>
                 <Card.Title>2 Minute Timeout</Card.Title>
                 <Card.Text>
@@ -29,8 +40,14 @@ const SupportPage = () => {
                 </Card.Body>
                 <br/>
                 <Card.Body>
-                <Card.Title>Move your body / 10 minute yoga</Card.Title>
-                <Card.Text></Card.Text>
+                <Card.Title> 
+                    <Card.Link href = 'https://www.youtube.com/watch?v=4pKly2JojMw&amplist=PLW0v0k7UCVrkh5WZyHu0d0fWnaNgbmQTw'>
+                    Move your body / 10 minute yoga 
+                    </Card.Link>
+                    </Card.Title>
+                <Card.Text>
+                Chances are, you’ve already heard about the many health perks of yoga. The ancient practice can improve your flexibility and posture, strengthen your muscles, and help with weight loss. It can also benefit your mental health, as many studies show yoga can reduce stress, anxiety, and depression.
+                </Card.Text>
                 </Card.Body>
                 <br/>
                 <Card.Body>

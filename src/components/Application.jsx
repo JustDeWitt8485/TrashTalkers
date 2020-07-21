@@ -12,7 +12,7 @@ import ProfilePage from './ProfilePage';
 import {UserContext} from '../providers/UserProvider'
 import  NotFound  from './NotFound'
 import './style.css'
-import SupportPage  from './SupportPage';
+import  SupportPage  from './SupportPage';
 
 
 
