@@ -53,7 +53,7 @@ class AddPost extends Component {
         variant="outline-info">
       <Form style={{
         // boxSizing:"border-box",
-        width:"40rem",
+        width:"60rem",
         display:"flex",
         flexDirection:"column",
       }}
@@ -67,8 +67,8 @@ class AddPost extends Component {
             borderColor: 'teal',
             borderWidth: '2px',
             padding: '.5rem',
-            fontFamily: "Sue Ellen Francis co, cursive",
-            fontSize:"150"
+            // fontFamily: "Sue Ellen Francis co, cursive",
+            fontSize:"150%"
           }}
           type="text"
           name="title"
@@ -76,21 +76,22 @@ class AddPost extends Component {
           value={title}
           onChange={this.handleChange}
         />
-        <input
+        <Form.Control
         style={{
-          height:"20rem",
+          // height:"20rem",
+          width: "96.5%",
           borderRadius:"25px",
           margin:"1rem",
           borderStyle:'ridge',
           borderColor: 'teal',
           borderWidth: '2px',
           padding:'.5rem',
-          fontFamily: "Sue Ellen Francis co, cursive",
           fontSize:"150%"
         }}
-          type="text"
+          as="textarea"
           name="content"
-          placeholder="Body"
+          rows="3"
+          placeholder="Whats On Your Mind Today?"
           value={content}
           onChange={this.handleChange}
         />
@@ -99,7 +100,8 @@ class AddPost extends Component {
         width:"15%",
         borderRadius:"25px",
         margin:'.5rem',
-        padding:'.25rem'}}
+        padding:'.25rem',
+        fontSize:"150%"}}
         variant="outline-info"
         as ="input" 
         className="create" 

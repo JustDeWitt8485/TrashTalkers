@@ -35,16 +35,16 @@ const NavigationBar = () => {
 
   {/* <br /> */}
   <Navbar bg="light" variant="light">
-    <Navbar.Brand href="/">Power Talk</Navbar.Brand>
+    <Navbar.Brand style={{fontSize:'150%'}} href="/">Power Talk</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
-      {currentUser && <Nav.Link href="/profile">Your Profile</Nav.Link>}
-      <Nav.Link href="/posts">Posts Feed</Nav.Link>
+      {/* <Nav.Link href="/">Home</Nav.Link> */}
+      {currentUser && <Nav.Link style={{fontSize:'150%'}} href="/profile">Your Profile</Nav.Link>}
+      <Nav.Link style={{fontSize:'150%'}} href="/posts">Posts Feed</Nav.Link>
       {currentUser ? 
-          <Nav.Link  href="/signout" onClick={ signOut }>Sign out</Nav.Link>
+          <Nav.Link style={{fontSize:'150%'}} href="/signout" onClick={ signOut }>Sign out</Nav.Link>
           : <>
-          <Nav.Link href="/signin">Sign in</Nav.Link>
-          <Nav.Link href="/signup">Sign up</Nav.Link>
+          <Nav.Link style={{fontSize:'150%'}} href="/signin">Sign in</Nav.Link>
+          <Nav.Link style={{fontSize:'150%'}} href="/signup">Sign up</Nav.Link>
           </> }
     </Nav>
   </Navbar>

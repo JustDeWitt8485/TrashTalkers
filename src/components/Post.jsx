@@ -26,12 +26,14 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
   // const {photoURL, displayName} = user
   return (
     <Card
-    padding = '3rem'
+      padding = '3rem'
       bg='light'
       border="info"
       style={{
         width:'32rem',
-        margin:"1rem"}}
+        margin:"1rem",
+        fontSize:"150%"}}
+        
     >
       {/* <article className="Post"> */}
       {/* <div className="Post--content"> */}
@@ -82,6 +84,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
         </div>
         <div>
           <Button
+          style={{fontSize:"120%"}}
           variant= 'outline-info' 
           className="star" 
           onClick={star}>
@@ -89,6 +92,7 @@ const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
           </Button>
           {belongsToCurrentUser(currentUser, user) && (
             <Button 
+            style={{fontSize:"120%"}}
             variant = "outline-info"
             className="delete" 
             onClick={remove}>
